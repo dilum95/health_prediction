@@ -67,9 +67,8 @@ export const signin = async (req,res) => {
 export const login = async (req,res) => {
     const user = req.body;
     const query = { email: user.email }
-    console.log(query)
+    console.log(user)
     await findOne(query, 'med_users').then(result => {
-            console.log(result)
             if (result) {
                 // compair password
                 bcrypt.compare(user.password, result.password, function (err, response) {
