@@ -13,7 +13,8 @@ export const updateUser = async (req,res) => {
     const updateData = {
                             $set: {
                                 name: user.name,
-                                dependent: user.dependent
+                                dependent: user.dependent,
+                                mobile:user.mobile
                             }
                         }
 

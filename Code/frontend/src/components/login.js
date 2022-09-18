@@ -13,35 +13,24 @@ onFormSubmit(event) {
   const password = event.target.thePassword.value;
 
   const getUsers = async(sendData) =>{
+  	const response=await axios.post("http://localhost:5001/login",sendData)
 
-	const response=await axios.post("http://localhost:5001/login",sendData)
-	if (response.status===200){
-		const data = response.data
+    if (response.status===200){
+  		const data = response.data
+              let userData = {
 
-        if (data.status == true) {
+              "user": data.name,
+              "id": data._id,
+              "email": data.email,
+              "mobile": data.mobile,
+              "dependent":data.dependent
+            }
 
-          let userData = {
-
-            "user": data.name,
-            "id": data._id,
-            "email": data.email,
-            "login": true
-          }
-
-          window.sessionStorage.setItem('activeuser', JSON.stringify(userData));
-          // setType(type)
-          // setSaveStatus(false)
-          // const navigate = useNavigate();	
-          // navigate("/home");
-
-        } else {
-
-          alert(data.msg)
-          // setSaveStatus(false)
-        }
-	}else{
-		alert("Error response")
-	}
+            window.sessionStorage.setItem('activeuser', JSON.stringify(userData));
+            alert("sucess")
+  	}else{
+  		alert("Error response")
+  	}
   }
 
   const sendData = {
@@ -50,9 +39,7 @@ onFormSubmit(event) {
   }
 
   getUsers(sendData)
-
-  console.log('Email:', email);
-  console.log('Password:', password);
+  event.preventDefault();
 };
 
   render() {

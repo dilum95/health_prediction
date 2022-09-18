@@ -27,3 +27,75 @@ export default function App() {
     </BrowserRouter>
   )
 }
+
+
+
+
+ // <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+        //   <div className="container">
+        //     <Link className="navbar-brand" to={'/sign-in'}>
+        //       positronX
+        //     </Link>
+        //     <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+        //       <ul className="navbar-nav ml-auto">
+        //         <li className="nav-item">
+        //           <Link className="nav-link" to={'/sign-in'}>
+        //             Login
+        //           </Link>
+        //         </li>
+        //         <li className="nav-item">
+        //           <Link className="nav-link" to={'/sign-up'}>
+        //             Sign up
+        //           </Link>
+        //         </li>
+        //       </ul>
+        //     </div>
+        //   </div>
+        // </nav>
+
+
+<table className="stuled-table" width="100%">
+        <thead>
+          <tr>
+            <th style={{textAlign:"center"}}>Index</th>
+            <th style={{textAlign:"center"}}>Name</th>
+            <th style={{textAlign:"center"}}>Email</th>
+            <th style={{textAlign:"center"}}>Phone</th>
+            <th style={{textAlign:"center"}}>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data &&
+            data.map((item,index)=>{
+              return(
+                <tr key={index}>
+                  <th scope="row">{index +1}</th>
+                  <th >{item.name}</th>
+                  <th >{item.email}</th>
+                  <th >{item.phone}</th>
+                  <th >
+                    <Link to={`/update/${item.id}`}>
+                      <button classNmae="btn bn-edit">Edit</button>
+                    </Link>
+                    <button classNmae="btn bn-edit" onClick={()=>onDeleteUser(item.id)}>Delete</button>
+                    <Link to={`/view/${item.id}`}>
+                      <button classNmae="btn bn-edit">View</button>
+                    </Link>
+                  </th>
+                </tr>
+                )
+            })
+
+          }
+        </tbody>
+      </table>
+
+
+      <form onSubmit={ this.onFormSubmit }>
+                  <div className="mb-3">
+                    <label>symptom1</label>
+                    <input type="text" className="form-control" placeholder="symptom1"  name="symptom1" />
+                    <label>symptom1</label>
+                    <input type="text" className="form-control" placeholder="symptom1"  name="symptom1" />
+                  </div>
+               </form>        

@@ -1,75 +1,128 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,Component,useEffect} from 'react'
 import {Link} from "react-router-dom";
-import "./Home.css";
 import axios from "axios";
+import Header from '../components/Header.js';
 
-const Home = () =>{
 
-	const [data,setData] = useState([]);
+export default class Home extends Component{
 
-	useEffect(() =>{
-		getUsers();
-	},[])
+	onFormSubmit(event) {
+  	
+		  const email = event.target.theEmail.value;
+		  const password = event.target.thePassword.value;
 
-	const getUsers = async() =>{
-		const response=await axios.get("http://localhost:5000/users")
-		if (response.status===200){
-			setData(response.data)
-		}
-	}
+		  const getUsers = async(sendData) =>{
+		  	const response=await axios.post("http://localhost:5001/login",sendData)
+		  	
+		  	if (response.status===200){
+		  		const data = response.result
 
-    const onDeleteUser = async(id)=>{
-    	if(window.confirm("Delete sure")){
-		const response=await axios.delete(`http://localhost:5000/user/${id}`)
-		console.log(response)
-		if (response.status===200){
-			console.log(response.data)
-			getUsers()
-		}
-	}
+		          if (data.status == true) {
 
-    }
+		            
 
+		          } else {
+
+		            alert(data.msg)
+		            // setSaveStatus(false)
+		          }
+		  	}else{
+		  		alert("Error response")
+		  	}
+		  }
+
+		  const sendData = {
+		    "email": email,
+		    "password": password
+		  }
+
+		  getUsers(sendData)
+		};
+
+
+    render() {
 	return(
 		<div>
+		<Header />
 			<h2>Home</h2>
-			<table className="stuled-table">
-				<thead>
-					<tr>
-						<th style={{textAlign:"center"}}>Index</th>
-						<th style={{textAlign:"center"}}>Name</th>
-						<th style={{textAlign:"center"}}>Email</th>
-						<th style={{textAlign:"center"}}>Phone</th>
-						<th style={{textAlign:"center"}}>Actions</th>
-					</tr>
-				</thead>
-				<tbody>
-					{data &&
-						data.map((item,index)=>{
-							return(
-								<tr key={index}>
-									<th scope="row">{index +1}</th>
-									<th >{item.name}</th>
-									<th >{item.email}</th>
-									<th >{item.phone}</th>
-									<th >
-										<Link to={`/update/${item.id}`}>
-											<button classNmae="btn bn-edit">Edit</button>
-										</Link>
-										<button classNmae="btn bn-edit" onClick={()=>onDeleteUser(item.id)}>Delete</button>
-										<Link to={`/view/${item.id}`}>
-											<button classNmae="btn bn-edit">View</button>
-										</Link>
-									</th>
-								</tr>
-								)
-						})
 
-					}
-				</tbody>
+			<table>
+				<tr>
+					<td>
+					Geneal Symptoms
+					</td>						
+					<td>
+					Heart Disease
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<form onSubmit={ this.onFormSubmitCommon }>
+		                  <div className="mb-3">
+		                    <input type="text" className="form-control" placeholder="symptom1"  name="symptom1" />
+		                    <input type="text" className="form-control" placeholder="symptom1"  name="symptom1" />
+		                  </div>
+		                  <div className="d-grid">
+				          <button type="submit" className="btn btn-primary">
+				            Submit
+				          </button>
+				        </div>
+		               </form>  
+					</td>
+					<td>
+						<form onSubmit={ this.onFormSubmitHeart }>
+		                  <div className="mb-3">
+		                    <input type="text" className="form-control" placeholder="symptom1"  name="symptom1" />
+		                    <input type="text" className="form-control" placeholder="symptom1"  name="symptom1" />
+		                  </div>
+		                  <div className="d-grid">
+				          <button type="submit" className="btn btn-primary">
+				            Submit
+				          </button>
+				        </div>
+		               </form>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					Diabities 
+					</td>
+					<td>
+					CKD
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<form onSubmit={ this.onFormSubmitDiabies }>
+		                  <div className="mb-3">
+		                    <input type="text" className="form-control" placeholder="symptom1"  name="symptom1" />
+		                    <input type="text" className="form-control" placeholder="symptom1"  name="symptom1" />
+		                  </div>
+		                  <div className="d-grid">
+				          <button type="submit" className="btn btn-primary">
+				            Submit
+				          </button>
+				        </div>
+		               </form>
+					</td>
+					<td>
+						<form onSubmit={ this.onFormSubmitCKD }>
+		                  <div className="mb-3">
+		                    <input type="text" className="form-control" placeholder="symptom1"  name="symptom1" />
+		                    <input type="text" className="form-control" placeholder="symptom1"  name="symptom1" />
+		                  </div>
+		                  <div className="d-grid">
+				          <button type="submit" className="btn btn-primary">
+				            Submit
+				          </button>
+				        </div>
+		               </form>
+					</td>
+				</tr>
 			</table>
+			
 		</div>
 		)
+	}	
 }
 
-export default Home

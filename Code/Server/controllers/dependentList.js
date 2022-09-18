@@ -2,7 +2,7 @@ import { findAll } from "../lib/db.handler.js";
 import bcrypt from "bcryptjs";
 
 // get dependent list
-// http://localhost:5000/dependentList/baba@gmail.com 
+// http://localhost:5001/dependentList/baba@gmail.com 
 export const dependentList = async (req,res) => {
     
     const email = req.params.email

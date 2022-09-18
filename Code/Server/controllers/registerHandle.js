@@ -35,9 +35,10 @@ const  checkAvaliableUser =(email) => {
 }
 
 // signin
-// http://localhost:5000/register
+// http://localhost:5001/register
 export const signin = async (req,res) => {
         const user = req.body;
+        console.log(user)
         // check avialble user
         const resUser = await checkAvaliableUser(user.email).catch(err => console.error(err));
 
@@ -49,7 +50,6 @@ export const signin = async (req,res) => {
             const new_body = {password,...user};    
             await insert(new_body, 'med_users').then(result => {                            
                 res.status(200).json({ status:'success'});
-                console.log(result)
             }).catch(err => {
                 console.error(err)
                 res.status(400).json({status:"fail", msg: 'Expectation Failed' });
@@ -63,36 +63,38 @@ export const signin = async (req,res) => {
 };
 
 // login
-// http://localhost:5000/login
+// http://localhost:5001/login
 export const login = async (req,res) => {
     const user = req.body;
     const query = { email: user.email }
-    console.log(user)
+    
     await findOne(query, 'med_users').then(result => {
-            if (result) {
-                // compair password
-                bcrypt.compare(user.password, result.password, function (err, response) {
-                    if (err) {
-                        console.log("🚀 ~ file: login.js ~ line 23 ~ bcrypt.compare ~ err", err)
-                        res.status(417).json({status:"fail", msg: "password encrypt faild" })
-                    }
-                    if (response) {
-                        delete result.password;
-                        res.status(200).json({status: "success",...result })
-                    } else {
-                        res.status(200).json({ status:"fail",msg: "Unauthorized" })
-                    }
-                });
+        if (result) {
+            // compair password
+            bcrypt.compare(user.password, result.password, function (err, response) {
+                if (err) {
+                    console.log("🚀 ~ file: login.js ~ line 23 ~ bcrypt.compare ~ err", err)
+                    res.status(417).json({status:"fail", msg: "password encrypt faild" })
+                }
+                if (response) {
+                    delete result.password;
+                    console.log(result)
+                    res.status(200).json({status: "success",...result })
 
-            } else {
-                res.status(200).json({ status:"fail",msg: "Unauthorized" })
-            }
+                } else {
+                    res.status(200).json({ status:"fail",msg: "Unauthorized" })
+                }
+            });
+
+        } else {
+            res.status(200).json({ status:"fail",msg: "Unauthorized" })
+        }
 
 
-        }).catch(err => {
-            console.log("🚀 ~ file: login.js ~ line 41 ~ findOne ~ err", err)
-            res.status(200).json({ status:"fail",msg: "Expectation Failed" })
-        })
+    }).catch(err => {
+        console.log("🚀 ~ file: login.js ~ line 41 ~ findOne ~ err", err)
+        res.status(200).json({ status:"fail",msg: "Expectation Failed" })
+    })
 
 };
 

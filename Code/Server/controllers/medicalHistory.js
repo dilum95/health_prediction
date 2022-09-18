@@ -6,7 +6,7 @@ import fetch from 'node-fetch';
 
 
 // get medical history
-// http://localhost:5000/medicalHistory/631f84372024141e981fd185
+// http://localhost:5001/medicalHistory/631f84372024141e981fd185
 export const medicalHistory = async (req,res) => {
 
     const userId = req.params.id
