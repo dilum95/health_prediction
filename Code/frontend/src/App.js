@@ -23,7 +23,7 @@ function App() {
               <Route path="/home" index element={<Home/>} />
               <Route path="/history/:id" element={<History/>} />
               <Route path="/dependent_list/:id" element={<Dependent/>} />
-              <Route path="/settings" element={<Settings/>} />
+              <Route path="/settings/:id" element={<Settings/>} />
             </Routes>
           </div>
         </div>

@@ -1,60 +1,68 @@
-import React,{useState,Component,useEffect} from 'react'
+import React,{useState,useEffect} from 'react'
 import {Link,useParams} from "react-router-dom";
 import axios from "axios";
 import Header from '../components/Header.js';
 
 
-const userIntt=JSON.parse(sessionStorage.getItem("activeuser"));
 const initialState = {
-	name:userIntt.user,
-	email:userIntt.email,
-	mobile:userIntt.mobile,
-	dependent:userIntt.dependent
+	name:"",
+	email:"",
+	mobile:"",
+	dependent:""
 };
 
 const Settings = () =>{
-	const userInt=JSON.parse(sessionStorage.getItem("activeuser"));
+	// const userInt=JSON.parse(sessionStorage.getItem("activeuser"));
 
 
 	const [state,setState]=useState(initialState);
 	const {name,email,mobile,dependent} = initialState;
 
 	const addContent = async (data) =>{
-		alert("invalid url")
+		const response=await axios.post(`http://localhost:5001/user/${id}`)
+		if (response.status===200){
+			console.log("work add content")
+		}
 	}
 
 	const updateUser = async (id,userData) =>{		
 
-		const response=await axios.put(`http://localhost:5000/user/${id}`,userData)
+		const response=await axios.put(`http://localhost:5001/updateUser/${id}`,userData)
 		if (response.status===200){
 			console.log("work add content")
 		}
+	}
+
+	const getSingleUser = async (id) =>{
+		const response=await axios.get(`http://localhost:5001/getuser/${id}`)
+		setState(response.data)	
 	}
 
 	// const navigate = useHistory();
 	const {id} = useParams();
 
 	const handleSubmit = (event) =>{
-		const newename = event.target.name.value;
-		const newemail = event.target.email.value;
-	    const newmobile = event.target.mobile.value;
-	    const dependent = event.target.dependent.value
+		event.preventDefault()
+		if(id){
+			const newename = event.target.name.value;
+			const newemail = event.target.email.value;
+		    const newmobile = event.target.mobile.value;
+		    const dependent = event.target.dependent.value
 
-	    let userData = {
+		    let userData = {
 
-              "name": newename,
-              "mobile": newmobile,
-              "dependent":dependent
-            }
-		updateUser(id,userData)
-		
-		
+	              "name": newename,
+	              "mobile": newmobile,
+	              "dependent":dependent
+	            }
+			updateUser(id,userData)
+		}else{
+			addContent(state)
+		}
+				
 	}
 
-	const getSingleUser = async (data) =>{
-			setState({data})	
-	}
-
+	
 	const handleInputChange =(e) =>{
 		let {name,value} =e.target;
 		setState({...state,[name]: value })
@@ -62,10 +70,10 @@ const Settings = () =>{
 
 	useEffect(() =>{
 		if(id){
-			handleSubmit()
+			getSingleUser(id);
+			
 		}else{
-			const user=JSON.parse(sessionStorage.getItem("activeuser"));
-			getSingleUser(user);
+			handleSubmit()
 		}
 	},[id])
 
@@ -74,7 +82,7 @@ const Settings = () =>{
 	return(
 		<div>
 		<Header />
-
+		<div className="handlediv">
 		<form onSubmit={ handleSubmit }>
         <h3>Settings</h3>
         <div className="mb-3">
@@ -85,9 +93,9 @@ const Settings = () =>{
             className="form-control"
             placeholder="First name"
             name="name"
-            onChange={(e) => this.handleInputChange(e)}
-
-            value={name || ""}
+            onChange={handleInputChange}
+            id="name"
+            value={name}
           />
         </div>
         <label>Email</label>
@@ -96,8 +104,9 @@ const Settings = () =>{
             className="form-control"
             placeholder="First name"
             name="email"
+            id="email"
             onChange={handleInputChange}
-            value={email || ""}
+            value={email}
           />
 
         <div className="mb-3">
@@ -107,8 +116,9 @@ const Settings = () =>{
             className="form-control"
             placeholder="Enter mobile number"
             name="mobile"
+            id="mobile"
             onChange={handleInputChange}
-            value={mobile || ""}
+            value={mobile}
           />
         </div>
         <div className="mb-3">
@@ -116,10 +126,11 @@ const Settings = () =>{
           <input
             type="text"
             className="form-control"
-            placeholder="Enter mobile number"
+            placeholder="Enter dependent"
             name="dependent"
+            id="dependent"
             onChange={handleInputChange}
-            value={dependent || ""}
+            value={dependent}
           />
         </div>
         <div className="d-grid">
@@ -129,7 +140,7 @@ const Settings = () =>{
         </div>
         
       </form>
-			
+		</div>	
 		</div>
 		);
 };	

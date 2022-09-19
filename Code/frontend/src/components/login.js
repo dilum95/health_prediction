@@ -1,21 +1,23 @@
 import React, { Component } from 'react'
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
+import "../css/authcss.css"
 
+const Login = () =>{
 
-export default class Login extends Component {
  
+const navigate = useNavigate();
 
-
-onFormSubmit(event) {
+const onFormSubmit=(event) =>{
   	
   const email = event.target.theEmail.value;
   const password = event.target.thePassword.value;
-
+  
   const getUsers = async(sendData) =>{
   	const response=await axios.post("http://localhost:5001/login",sendData)
 
     if (response.status===200){
+      
   		const data = response.data
               let userData = {
 
@@ -27,7 +29,7 @@ onFormSubmit(event) {
             }
 
             window.sessionStorage.setItem('activeuser', JSON.stringify(userData));
-            alert("sucess")
+            navigate('/home');
   	}else{
   		alert("Error response")
   	}
@@ -42,9 +44,9 @@ onFormSubmit(event) {
   event.preventDefault();
 };
 
-  render() {
     return (
-      <form onSubmit={ this.onFormSubmit }>
+      <div className="handledivpro"> 
+      <form onSubmit={ onFormSubmit }>
         <h3>Sign In</h3>
         <div className="mb-3">
           <label>Email address</label>
@@ -82,9 +84,15 @@ onFormSubmit(event) {
           </button>
         </div>
         <p className="forgot-password text-right">
-          Forgot <a href="#">password?</a>
+          <Link className="nav-link" to={'/sign-up'}>
+            Sign up <a href="#"></a>
+
+          </Link>
         </p>
       </form>
-    )
-  }
-}
+      </div>
+    );
+  
+};
+
+export default Login

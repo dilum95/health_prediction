@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "../css/authcss.css"
 
+const SignUp = () =>{
 
-export default class  SignUp extends Component{
+const navigate = useNavigate();
 
-onFormSubmit(event) {
+const onFormSubmit=(event) =>{
+
     
   const name = event.target.name.value;
   const password = event.target.password.value;
@@ -13,34 +17,13 @@ onFormSubmit(event) {
   const mobile = event.target.mobile.value;
   const confirmPasswod = event.target.confirmPasswod.value;
   const dependent="";
+  const image="default.png"
 
   const addUser = async(sendData) =>{
 
     const response=await axios.post("http://localhost:5001/register",sendData)
     if (response.status===200){
-        const data = response.data
-
-        if (data.status === true) {
-
-          let userData = {
-
-            "user": data.name,
-            "id": data._id,
-            "email": data.email,
-            "login": true
-          }
-
-          // window.sessionStorage.setItem('activeuser', JSON.stringify(userData));
-          // setType(type)
-          // setSaveStatus(false)
-          // const navigate = useNavigate();    
-          // navigate("/home");
-
-        } else {
-
-          alert(data.msg)
-          // setSaveStatus(false)
-        }
+        navigate('/sign-in');        
     }else{
         alert("Error response")
     }
@@ -52,7 +35,8 @@ onFormSubmit(event) {
     "name": name,
     "birthday": birthday,
     "mobile": mobile,
-    "dependent":dependent
+    "dependent":dependent,
+    "image":image
   }
 
   if(password===confirmPasswod){
@@ -60,16 +44,13 @@ onFormSubmit(event) {
   }else{
     alert("password not matching")
   }
-  
-
-  console.log('Email:', email);
-  console.log('Password:', password);
+  event.preventDefault();
 };
 
 
-  render() {
     return (
-      <form onSubmit={ this.onFormSubmit }>
+      <div className="handledivpro"> 
+      <form onSubmit={ onFormSubmit }>
         <h3>Sign Up</h3>
         <div className="mb-3">
           <label>Name</label>
@@ -129,6 +110,8 @@ onFormSubmit(event) {
           Already registered <a href="/sign-in">sign in?</a>
         </p>
       </form>
+      </div>
     )
-  } 
-}
+
+};
+export default SignUp

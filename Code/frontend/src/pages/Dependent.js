@@ -50,7 +50,7 @@ const Dependent = () =>{
 
 			<Header />
 
-			<h2>History</h2>
+			<h3>Dependent List</h3>
 			<table className="stuled-table" width="100%">
         <thead>
           <tr>
@@ -71,9 +71,9 @@ const Dependent = () =>{
                   <th >{item.email}</th>
                   <th >{item.mobile}</th>
                   <th >
-                  	  <button classNmae="btn bn-edit" onClick={()=>onDeleteUser(item._id)}>Delete</button>
+                  	  <button className="btn btn-danger paddingbtn" onClick={()=>onDeleteUser(item._id)}>Delete</button>
                       <Link to={`/history/${item._id}`}>
-                       <button classNmae="btn bn-edit">View</button>
+                       <button className="btn btn-primary">View</button>
                       </Link>		
                   </th>
                 </tr>

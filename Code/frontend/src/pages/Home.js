@@ -14,21 +14,7 @@ export default class Home extends Component{
 		  const getUsers = async(sendData) =>{
 		  	const response=await axios.post("http://localhost:5001/login",sendData)
 		  	
-		  	if (response.status===200){
-		  		const data = response.result
-
-		          if (data.status == true) {
-
-		            
-
-		          } else {
-
-		            alert(data.msg)
-		            // setSaveStatus(false)
-		          }
-		  	}else{
-		  		alert("Error response")
-		  	}
+		  	
 		  }
 
 		  const sendData = {
@@ -44,9 +30,9 @@ export default class Home extends Component{
 	return(
 		<div>
 		<Header />
-			<h2>Home</h2>
+			<h3>Home</h3>
 
-			<table>
+			<table className="handlediv">
 				<tr>
 					<td>
 					Geneal Symptoms
@@ -62,7 +48,7 @@ export default class Home extends Component{
 		                    <input type="text" className="form-control" placeholder="symptom1"  name="symptom1" />
 		                    <input type="text" className="form-control" placeholder="symptom1"  name="symptom1" />
 		                  </div>
-		                  <div className="d-grid">
+		                  <div >
 				          <button type="submit" className="btn btn-primary">
 				            Submit
 				          </button>
@@ -75,7 +61,7 @@ export default class Home extends Component{
 		                    <input type="text" className="form-control" placeholder="symptom1"  name="symptom1" />
 		                    <input type="text" className="form-control" placeholder="symptom1"  name="symptom1" />
 		                  </div>
-		                  <div className="d-grid">
+		                  <div >
 				          <button type="submit" className="btn btn-primary">
 				            Submit
 				          </button>
@@ -98,7 +84,7 @@ export default class Home extends Component{
 		                    <input type="text" className="form-control" placeholder="symptom1"  name="symptom1" />
 		                    <input type="text" className="form-control" placeholder="symptom1"  name="symptom1" />
 		                  </div>
-		                  <div className="d-grid">
+		                  <div >
 				          <button type="submit" className="btn btn-primary">
 				            Submit
 				          </button>
@@ -111,7 +97,7 @@ export default class Home extends Component{
 		                    <input type="text" className="form-control" placeholder="symptom1"  name="symptom1" />
 		                    <input type="text" className="form-control" placeholder="symptom1"  name="symptom1" />
 		                  </div>
-		                  <div className="d-grid">
+		                  <div>
 				          <button type="submit" className="btn btn-primary">
 				            Submit
 				          </button>

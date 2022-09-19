@@ -36,7 +36,7 @@ const View = () =>{
 
 			<Header />
 
-			<h2>History</h2>
+			<h3>History</h3>
 			<table className="stuled-table" width="100%">
         <thead>
           <tr>
