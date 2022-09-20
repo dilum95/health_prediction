@@ -6,6 +6,8 @@ import {updateUser} from "../controllers/updateUser.js";
 import {medicalHistory} from "../controllers/medicalHistory.js";
 import {addDependen} from "../controllers/addDependen.js";
 import {dependentList} from "../controllers/dependentList.js";
+import upload from "../controllers/upload.js";
+import {updateAnUserImage} from "../controllers/updateAnUserImage.js";
 
 
 const router = express.Router();
@@ -18,6 +20,7 @@ router.put("/updateUser/:id",updateUser)
 router.get("/medicalHistory/:id",medicalHistory)
 router.put("/addDependen/:id",addDependen)
 router.get("/dependentList/:email",dependentList)
+router.patch("/upload/:id",upload,updateAnUserImage)
 
 export default router;     
 

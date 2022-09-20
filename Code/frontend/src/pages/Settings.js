@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import {Link,useParams} from "react-router-dom";
+import {Link,useParams,useNavigate} from "react-router-dom";
 import axios from "axios";
 import Header from '../components/Header.js';
 
@@ -11,34 +11,52 @@ const initialState = {
 	dependent:""
 };
 
+
 const Settings = () =>{
-	// const userInt=JSON.parse(sessionStorage.getItem("activeuser"));
+const navigate = useNavigate();
 
 
 	const [state,setState]=useState(initialState);
+	const [fileData, setFileData] = useState("");
+
+  const fileChangeHandler = (e) => {
+    setFileData(e.target.files[0]);
+  };
+
+
 	const {name,email,mobile,dependent} = initialState;
 
-	const addContent = async (data) =>{
-		const response=await axios.post(`http://localhost:5001/user/${id}`)
-		if (response.status===200){
-			console.log("work add content")
-		}
-	}
-
-	const updateUser = async (id,userData) =>{		
+	 const updateUser = async (id,userData) =>{		
 
 		const response=await axios.put(`http://localhost:5001/updateUser/${id}`,userData)
 		if (response.status===200){
-			console.log("work add content")
+			navigate('/home');
 		}
 	}
 
 	const getSingleUser = async (id) =>{
 		const response=await axios.get(`http://localhost:5001/getuser/${id}`)
-		setState(response.data)	
+		console.log(response.data)
+		const dataset={
+			name:response.data.name,
+			email:response.data.email,
+			mobile:response.data.mobile,
+			dependent:response.data.dependent
+		}
+		setState(dataset)	
 	}
 
-	// const navigate = useHistory();
+	// #############################################
+	const imageUrl = "http://localhost:5001/public/1663610340968--profile.png";
+		const [img, setImg] = useState();
+
+		const fetchImage = async () => {
+	    const res = await fetch(imageUrl);
+	    const imageBlob = await res.blob();
+	    const imageObjectURL = URL.createObjectURL(imageBlob);
+	    setImg(imageObjectURL);
+	  };
+	// #############################################
 	const {id} = useParams();
 
 	const handleSubmit = (event) =>{
@@ -46,19 +64,45 @@ const Settings = () =>{
 		if(id){
 			const newename = event.target.name.value;
 			const newemail = event.target.email.value;
-		    const newmobile = event.target.mobile.value;
-		    const dependent = event.target.dependent.value
+	    const newmobile = event.target.mobile.value;
+	    const dependent = event.target.dependent.value
 
 		    let userData = {
-
 	              "name": newename,
 	              "mobile": newmobile,
 	              "dependent":dependent
 	            }
 			updateUser(id,userData)
 		}else{
-			addContent(state)
+			alert("invalid path")
 		}
+
+   // ###############################################################################
+
+		if (
+      (fileData && fileData.type === "image/png") ||
+      fileData.type === "image/jpeg" ||
+      fileData.type === "image/jpg"
+    ) {
+
+      const data = new FormData();
+      data.append("ProfilePicture", fileData);
+      
+      fetch(
+        `http://localhost:5001/upload/${id}`,
+        {
+          method: "PATCH",
+          body: data,
+        }
+      )
+        .then((result) => {
+          console.log("File Sent Successful");
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }
+		// ##########################################################################
 				
 	}
 
@@ -71,11 +115,12 @@ const Settings = () =>{
 	useEffect(() =>{
 		if(id){
 			getSingleUser(id);
+			fetchImage();
 			
 		}else{
 			handleSubmit()
 		}
-	},[id])
+	},[id,state])
 
 
 
@@ -95,7 +140,7 @@ const Settings = () =>{
             name="name"
             onChange={handleInputChange}
             id="name"
-            value={name}
+            defaultValue={state.name}
           />
         </div>
         <label>Email</label>
@@ -106,7 +151,7 @@ const Settings = () =>{
             name="email"
             id="email"
             onChange={handleInputChange}
-            value={email}
+            value={state.email}
           />
 
         <div className="mb-3">
@@ -118,7 +163,7 @@ const Settings = () =>{
             name="mobile"
             id="mobile"
             onChange={handleInputChange}
-            value={mobile}
+            value={state.mobile}
           />
         </div>
         <div className="mb-3">
@@ -130,9 +175,13 @@ const Settings = () =>{
             name="dependent"
             id="dependent"
             onChange={handleInputChange}
-            value={dependent}
+            value={state.dependent}
           />
         </div>
+        <div className="mb-3">
+	        <label>Update Profile picture</label><br/>
+	        <input type="file" onChange={fileChangeHandler} />
+	      </div>  
         <div className="d-grid">
           <button type="submit" className="btn btn-primary">
             Update

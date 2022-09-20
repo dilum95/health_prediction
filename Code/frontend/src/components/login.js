@@ -25,7 +25,8 @@ const onFormSubmit=(event) =>{
               "id": data._id,
               "email": data.email,
               "mobile": data.mobile,
-              "dependent":data.dependent
+              "dependent":data.dependent,
+              "image":data.image
             }
 
             window.sessionStorage.setItem('activeuser', JSON.stringify(userData));

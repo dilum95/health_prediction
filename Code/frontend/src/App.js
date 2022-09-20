@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import History from './pages/History';
 import Dependent from './pages/Dependent';
 import Settings from './pages/Settings';
+import Image from './pages/Image';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
               <Route path="/history/:id" element={<History/>} />
               <Route path="/dependent_list/:id" element={<Dependent/>} />
               <Route path="/settings/:id" element={<Settings/>} />
+              <Route path="/image" element={<Image/>} />
             </Routes>
           </div>
         </div>

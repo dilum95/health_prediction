@@ -99,3 +99,30 @@ export default function App() {
                     <input type="text" className="form-control" placeholder="symptom1"  name="symptom1" />
                   </div>
                </form>        
+
+
+// {data &&
+      //       data.map((item,index)=>{
+      //         return(
+            //       <div class="card" key={index}>
+            //        <div class="container">
+            //          <h4 scope="row"><b>{index +1}.{item.prediction}</b></h4>
+            //          <p>{item.date}</p>
+            //        </div>
+            //      </div>
+            //      )
+      //       })
+
+      // }                     
+
+
+import pandas as pd
+import pickle
+
+with open('model_symptom-bad','rb') as file:
+  mp = pickle.load(file)
+X_test_new = [1,4,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0]    
+data=pd.DataFrame(X_test_new).transpose()
+print(data)
+pre=mp.predict(data)
+print(pre)

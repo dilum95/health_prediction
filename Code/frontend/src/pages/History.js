@@ -9,7 +9,17 @@ const View = () =>{
 	const {id} = useParams();
 	const [data,setData]=useState([]);
 
-	
+	// #############################################
+	  const imageUrl = "logo512.png";
+		const [img, setImg] = useState();
+
+		const fetchImage = async () => {
+	    const res = await fetch(imageUrl);
+	    const imageBlob = await res.blob();
+	    const imageObjectURL = URL.createObjectURL(imageBlob);
+	    setImg(imageObjectURL);
+	  };
+	// #############################################
 
 	if(!id){
 		// redicret to home
@@ -17,6 +27,10 @@ const View = () =>{
 		
 	useEffect(()=>{
 		getUserHosory(id)
+	},[])	
+
+	useEffect(()=>{
+		fetchImage()
 	},[])	
 	    	
 	const getUserHosory = async(id) =>{
@@ -37,6 +51,9 @@ const View = () =>{
 			<Header />
 
 			<h3>History</h3>
+			<div>
+	      <img src={img} alt="icons" />
+	    </div>
 			<table className="stuled-table" width="100%">
         <thead>
           <tr>
@@ -60,6 +77,7 @@ const View = () =>{
           }
         </tbody>
       </table>
+      			
 		</div>
 		)
 }
