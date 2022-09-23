@@ -30,7 +30,10 @@ const navigate = useNavigate();
 
 		const response=await axios.put(`http://localhost:5001/updateUser/${id}`,userData)
 		if (response.status===200){
+			alert("Updated sucessfully")
 			navigate('/home');
+		}else{
+			alert("update fail")
 		}
 	}
 
@@ -151,7 +154,7 @@ const navigate = useNavigate();
             name="email"
             id="email"
             onChange={handleInputChange}
-            value={state.email}
+            defaultValue={state.email}
           />
 
         <div className="mb-3">
@@ -163,7 +166,7 @@ const navigate = useNavigate();
             name="mobile"
             id="mobile"
             onChange={handleInputChange}
-            value={state.mobile}
+            defaultValue={state.mobile}
           />
         </div>
         <div className="mb-3">
@@ -175,7 +178,7 @@ const navigate = useNavigate();
             name="dependent"
             id="dependent"
             onChange={handleInputChange}
-            value={state.dependent}
+            defaultValue={state.dependent}
           />
         </div>
         <div className="mb-3">

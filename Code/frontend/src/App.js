@@ -5,6 +5,9 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Login from './components/login.js'
 import SignUp from './components/signup.js'
 import Home from './pages/Home';
+import Diabities from './pages/Diabities';
+import Ckd from './pages/Ckd';
+import Heart from './pages/Heart';
 import History from './pages/History';
 import Dependent from './pages/Dependent';
 import Settings from './pages/Settings';
@@ -26,6 +29,9 @@ function App() {
               <Route path="/dependent_list/:id" element={<Dependent/>} />
               <Route path="/settings/:id" element={<Settings/>} />
               <Route path="/image" element={<Image/>} />
+              <Route path="/diabities" element={<Diabities/>} />
+              <Route path="/ckd" element={<Ckd/>} />
+              <Route path="/heart" element={<Heart/>} />
             </Routes>
           </div>
         </div>

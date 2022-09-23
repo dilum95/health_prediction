@@ -18,6 +18,15 @@ const Header = () =>{
 		else if(location.pathname ==="/settings:id"){
 			setActiveTab("Settings");
 		}
+		else if(location.pathname ==="/diabities"){
+			setActiveTab("Dabities");
+		}
+		else if(location.pathname ==="/ckd"){
+			setActiveTab("Ckd");
+		}
+		else if(location.pathname ==="/heart"){
+			setActiveTab("Heart");
+		}
 
 	},[location])
 
@@ -29,6 +38,15 @@ const Header = () =>{
 			<div className="header-right">
 			 <Link to="/home">
 			 	<p className={`${activeTab==="Home" ? "active":""}`}  onClick={() => setActiveTab("Home")}>Home</p>
+			 </Link>
+			 <Link to="/heart ">
+			 	<p className={`${activeTab==="Heart" ? "active":""}`}  onClick={() => setActiveTab("Heart")}>Heart Diseases</p>
+			 </Link>
+			 <Link to="/diabities">
+			 	<p className={`${activeTab==="Diabities" ? "active":""}`}  onClick={() => setActiveTab("Diabities")}>Diabities</p>
+			 </Link>
+			 <Link to="/ckd">
+			 	<p className={`${activeTab==="Ckd" ? "active":""}`}  onClick={() => setActiveTab("Ckd")}>CKD</p>
 			 </Link>
 			<Link to={`/history/${user.id}`}>
 			 	<p className={`${activeTab==="Adduser" ? "active":""}`} onClick={() => setActiveTab("History")} >My History</p>

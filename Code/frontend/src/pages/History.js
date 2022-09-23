@@ -51,15 +51,11 @@ const View = () =>{
 			<Header />
 
 			<h3>History</h3>
-			<div>
-	      <img src={img} alt="icons" />
-	    </div>
+			
 			<table className="stuled-table" width="100%">
         <thead>
           <tr>
-            <th style={{textAlign:"center"}}>Index</th>
-            <th style={{textAlign:"center"}}>Check Date</th>
-            <th style={{textAlign:"center"}}>Prediction</th>
+            <th style={{textAlign:"center"}}></th>
           </tr>
         </thead>
         <tbody>
@@ -67,9 +63,15 @@ const View = () =>{
             data.map((item,index)=>{
               return(
                 <tr key={index}>
-                  <th scope="row">{index +1}</th>
-                  <th >{item.date}</th>
-                  <th >{item.prediction}</th>
+                  <th >
+                  <div class="card">
+										  <div class="container">
+										    <h4><b>{item.type}</b></h4> 
+										    <p>{item.date}</p> 
+										    <p>{item.prediction}</p> 
+										  </div>
+										</div>
+									</th>	
                 </tr>
                 )
             })

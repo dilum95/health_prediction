@@ -38,7 +38,7 @@ const  checkAvaliableUser =(email) => {
 // http://localhost:5001/register
 export const signin = async (req,res) => {
         const user = req.body;
-        console.log(user)
+        // console.log(user)
         // check avialble user
         const resUser = await checkAvaliableUser(user.email).catch(err => console.error(err));
 
@@ -57,7 +57,8 @@ export const signin = async (req,res) => {
             })
 
         }else{
-            res.status(400).json({status:"fail", msg: 'user exist' });
+            console.log("already exist")
+            res.status(200).json({status:"fail", msg: 'user already exist' });
         }
 
 };

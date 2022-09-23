@@ -15,10 +15,12 @@ const onFormSubmit=(event) =>{
   
   const getUsers = async(sendData) =>{
   	const response=await axios.post("http://localhost:5001/login",sendData)
-
+    console.log(response)
     if (response.status===200){
       
   		const data = response.data
+
+      if(data.status=="success"){
               let userData = {
 
               "user": data.name,
@@ -31,6 +33,9 @@ const onFormSubmit=(event) =>{
 
             window.sessionStorage.setItem('activeuser', JSON.stringify(userData));
             navigate('/home');
+          }else{
+            alert("Invalid login ID")
+          }
   	}else{
   		alert("Error response")
   	}
@@ -56,6 +61,7 @@ const onFormSubmit=(event) =>{
             className="form-control"
             placeholder="Enter email"
             name="theEmail"
+            required
           />
         </div>
         <div className="mb-3">
@@ -65,6 +71,7 @@ const onFormSubmit=(event) =>{
             className="form-control"
             placeholder="Enter password"
             name="thePassword"
+            required
           />
         </div>
         <div className="mb-3">

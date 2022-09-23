@@ -23,9 +23,17 @@ const onFormSubmit=(event) =>{
 
     const response=await axios.post("http://localhost:5001/register",sendData)
     if (response.status===200){
-        navigate('/sign-in');        
+      console.log(response.data)
+      const data=response.data
+        if(data.status=="success"){
+          alert("Successfully Register")
+          navigate('/sign-in');
+        }else{
+          alert(data.msg)
+        };        
     }else{
         alert("Error response")
+        console.log(response.data)
     }
   }
 
