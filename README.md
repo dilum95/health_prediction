@@ -19,4 +19,4 @@ open terminal
 "python3 model.py"
 
 note:install flask,flask_cors,pandas,pickle,sklearn essential
-use "npm install "commant to install them 
+use "pip install "commant to install them 
