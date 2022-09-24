@@ -28,7 +28,7 @@ function App() {
               <Route path="/history/:id" element={<History/>} />
               <Route path="/dependent_list/:id" element={<Dependent/>} />
               <Route path="/settings/:id" element={<Settings/>} />
-              <Route path="/image" element={<Image/>} />
+              <Route path="/image/:id" element={<Image/>} />
               <Route path="/diabities" element={<Diabities/>} />
               <Route path="/ckd" element={<Ckd/>} />
               <Route path="/heart" element={<Heart/>} />

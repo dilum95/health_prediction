@@ -1,10 +1,36 @@
 import React,{useEffect,useState} from 'react'
 import {Link,useLocation} from "react-router-dom"
-import "./Header.css"
+import ReactDOM from 'react-dom'
+import axios from "axios";
+import "../css/Header.css"
+// import logo from "./logo512.png";
 
+// const user=JSON.parse(sessionStorage.getItem("image"));
+const initialState = {
+	image:" ",
+};
 
 const Header = () =>{
+	const [state,setState]=useState(initialState);
+	
 	const [activeTab,setActiveTab] = useState("Home")
+
+	const getSingleUser = async (id) =>{
+		const response=await axios.get(`http://localhost:5001/getuser/${id}`)
+		console.log(response.data)
+		const dataset={
+			image:response.data.image
+		}
+		setState(dataset)	
+	}
+
+
+	useEffect(() =>{
+
+				const user=JSON.parse(sessionStorage.getItem("activeuser"));
+				getSingleUser(user.id);
+
+			},[state])
 
 	const location= useLocation();
 	useEffect(() =>{
@@ -32,8 +58,14 @@ const Header = () =>{
 
 	const user=JSON.parse(sessionStorage.getItem("activeuser"));
 
+
+
+
 	return(
 		<div className="topnav">
+		
+			<img className="imgProfile" src={state.image} alt="Red dot" />
+
 			 <p><h3 className="h3clolor">Health Prediction System</h3></p> 
 			<div className="header-right">
 			 <Link to="/home">

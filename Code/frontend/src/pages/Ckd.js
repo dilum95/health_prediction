@@ -104,11 +104,11 @@ const Home = () =>{
 	        var prediction=data.msg
 
 	        if(prediction[1]==='0'){
-	        	prediction="Chronic kidney disease Risk Absent"
+	        	prediction="Chronic Kidney Diseases Risk Absent"
 	        	alert("You haven't CKD Risk")
 	        }else{
-	        	prediction="Chronic kidney disease Risk Present"
-	        	alert("You have Diabities Risk")
+	        	prediction="Chronic Kidney Diseases Risk Present"
+	        	alert("You have CKD Risk")
 	        }
 
 	        const predictions={

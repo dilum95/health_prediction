@@ -21,6 +21,8 @@ const View = () =>{
 	  };
 	// #############################################
 
+	
+
 	if(!id){
 		// redicret to home
 	}		// get ser predict history	
@@ -51,6 +53,8 @@ const View = () =>{
 			<Header />
 
 			<h3>History</h3>
+
+			
 			
 			<table className="stuled-table" width="100%">
         <thead>

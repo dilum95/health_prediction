@@ -15,6 +15,42 @@ const initialState = {
 const Settings = () =>{
 const navigate = useNavigate();
 
+const {id} = useParams();
+  const uploadbase64 = async(e) =>{
+    const file=e.target.files[0]
+
+    const base64 = await convertBase64(file)
+    const userData={
+        img:base64
+      }
+    let userImage = {
+            "image":base64
+      }
+    window.sessionStorage.setItem('image', JSON.stringify(userImage));      
+    const response=await axios.put(`http://localhost:5001/updateAnUserImage/${id}`,userData)
+      if (response.status===200){
+        alert("Updated sucessfully")
+        // navigate('/home');
+      }else{
+        alert("update fail")
+      }
+  }
+
+  const convertBase64=(file)=>{
+      return new Promise((resolve,reject)=>{
+        const fileReader=new FileReader();
+        fileReader.readAsDataURL(file)
+
+        fileReader.onload = () =>{
+          resolve(fileReader.result)
+        };
+
+        fileReader.onerror=(error)=>{
+          reject(error)
+        }
+
+      })
+  };
 
 	const [state,setState]=useState(initialState);
 	const [fileData, setFileData] = useState("");
@@ -49,7 +85,7 @@ const navigate = useNavigate();
 		setState(dataset)	
 	}
 
-	// #############################################
+	
 	const imageUrl = "http://localhost:5001/public/1663610340968--profile.png";
 		const [img, setImg] = useState();
 
@@ -59,8 +95,7 @@ const navigate = useNavigate();
 	    const imageObjectURL = URL.createObjectURL(imageBlob);
 	    setImg(imageObjectURL);
 	  };
-	// #############################################
-	const {id} = useParams();
+
 
 	const handleSubmit = (event) =>{
 		event.preventDefault()
@@ -79,35 +114,9 @@ const navigate = useNavigate();
 		}else{
 			alert("invalid path")
 		}
-
-   // ###############################################################################
-
-		if (
-      (fileData && fileData.type === "image/png") ||
-      fileData.type === "image/jpeg" ||
-      fileData.type === "image/jpg"
-    ) {
-
-      const data = new FormData();
-      data.append("ProfilePicture", fileData);
-      
-      fetch(
-        `http://localhost:5001/upload/${id}`,
-        {
-          method: "PATCH",
-          body: data,
-        }
-      )
-        .then((result) => {
-          console.log("File Sent Successful");
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
-    }
-		// ##########################################################################
 				
 	}
+
 
 	
 	const handleInputChange =(e) =>{
@@ -180,18 +189,12 @@ const navigate = useNavigate();
             onChange={handleInputChange}
             defaultValue={state.dependent}
           />
-        </div>
-        <div className="mb-3">
-	        <label>Update Profile picture</label><br/>
-	        <input type="file" onChange={fileChangeHandler} />
-	      </div>  
-        <div className="d-grid">
-          <button type="submit" className="btn btn-primary">
-            Update
-          </button>
-        </div>
-        
+        </div>          
       </form>
+           <div className="mb-3">
+	        <h3>Edit Pofile Picture</h3><br/>
+	        <input type="file" onChange={(e)=>{uploadbase64(e)}} />
+	      </div>
 		</div>	
 		</div>
 		);

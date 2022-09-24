@@ -1,49 +1,58 @@
 import React, { useState } from "react";
 import { Button, Form } from "react-form-elements";
 import {Link,useParams,useNavigate} from "react-router-dom";
+import axios from "axios";
+import Header from '../components/Header.js';
+
 
 function EditProfile() {
-  const [fileData, setFileData] = useState("");
 
-  const fileChangeHandler = (e) => {
-    setFileData(e.target.files[0]);
-  };
 
-  const onSubmitHandler = () => {
-    if (
-      (fileData && fileData.type === "image/png") ||
-      fileData.type === "image/jpeg" ||
-      fileData.type === "image/jpg"
-    ) {
+  const {id} = useParams();
+  const uploadbase64 = async(e) =>{
+    const file=e.target.files[0]
 
-      const data = new FormData();
-      data.append("ProfilePicture", fileData);
-      // const {id} = useParams();
-      fetch(
-        `http://localhost:5001/upload/631f84372024141e981fd185`,
-        {
-          method: "PATCH",
-          body: data,
+    const base64 = await convertBase64(file)
+    const userData={
+        img:base64
+      }
+    let userImage = {
+            "image":base64
+      }
+    window.sessionStorage.setItem('image', JSON.stringify(userImage));      
+    const response=await axios.put(`http://localhost:5001/updateAnUserImage/${id}`,userData)
+      if (response.status===200){
+        alert("Updated sucessfully")
+        // navigate('/home');
+      }else{
+        alert("update fail")
+      }
+  }
+
+  const convertBase64=(file)=>{
+      return new Promise((resolve,reject)=>{
+        const fileReader=new FileReader();
+        fileReader.readAsDataURL(file)
+
+        fileReader.onload = () =>{
+          resolve(fileReader.result)
+        };
+
+        fileReader.onerror=(error)=>{
+          reject(error)
         }
-      )
-        .then((result) => {
-          console.log("File Sent Successful");
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
-    }
+
+      })
   };
 
 
   return (
     <div>
-      <Form onSubmit={ onSubmitHandler } name="edit profile form">
-        <input type="file" onChange={fileChangeHandler} />
-        <Button type="submit" className="profile-order-button">
-          Save Changes
-        </Button>
-       </Form>
+    <Header />
+     <div className="mb-3">
+        <h3>Edit Pofile Picture</h3><br/>
+        <input type="file" onChange={(e)=>{uploadbase64(e)}} />
+      </div>
     </div>
   );
 }

@@ -15,7 +15,6 @@ const onFormSubmit=(event) =>{
   
   const getUsers = async(sendData) =>{
   	const response=await axios.post("http://localhost:5001/login",sendData)
-    console.log(response)
     if (response.status===200){
       
   		const data = response.data
@@ -31,7 +30,12 @@ const onFormSubmit=(event) =>{
               "image":data.image
             }
 
+            let userImage = {
+              "image":data.image
+            }
+
             window.sessionStorage.setItem('activeuser', JSON.stringify(userData));
+            window.sessionStorage.setItem('image', JSON.stringify(userImage));
             navigate('/home');
           }else{
             alert("Invalid login ID")

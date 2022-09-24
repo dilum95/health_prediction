@@ -4,16 +4,16 @@ import { ObjectId } from "mongodb";
 
 export const updateAnUserImage = async (req, res) => {
     const id = req.params.id;
-    const path = req.file.path.replace(/\\/g, "/")
-    req.body = {ProfilePicture: "http://localhost:5001/" + path}
+    const img= req.body.img
+    // const path = req.file.path.replace(/\\/g, "/")
+    // req.body = {ProfilePicture: "http://localhost:5001/" + path}
 
     const currrntData = { _id: ObjectId(id) }
     const updateData = {
                             $set: {
-                                image: req.body.ProfilePicture 
+                                image: img 
                             }
                         }
-
     await updateOne(currrntData, updateData, 'med_users').then(result => {
         if (result.modifiedCount == 1) {
             res.status(200).json({status: "success"});

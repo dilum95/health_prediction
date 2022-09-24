@@ -21,6 +21,7 @@ router.get("/medicalHistory/:id",medicalHistory)
 router.put("/addDependen/:id",addDependen)
 router.get("/dependentList/:email",dependentList)
 router.patch("/upload/:id",upload,updateAnUserImage)
+router.put("/updateAnUserImage/:id",updateAnUserImage)
 
 export default router;     
 

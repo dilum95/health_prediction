@@ -7,13 +7,7 @@ import Header from '../components/Header.js';
 const Dependent = () =>{
 
 	const {id} = useParams();
-	const [data,setData]=useState([]);
-
-	
-
-	if(!id){
-		// redicret to home
-	}		// get ser predict history	
+	const [data,setData]=useState([]);	
 		
 	useEffect(()=>{
 		getUserHosory(id)
@@ -58,11 +52,12 @@ const Dependent = () =>{
                 				<div class="flip-card" key={index}>
 												  <div class="flip-card-inner">
 												    <div class="flip-card-front">
-												      <h1>{item.name}</h1> 
+												      <img src={item.image} alt="Avatar" className="carImage"/>
+												    </div>
+												    <div class="flip-card-back" className="carImage">
+												    	<h1>{item.name}</h1> 
 												      <p>{item.email}</p> 
 												      <p>{item.mobile}</p>
-												    </div>
-												    <div class="flip-card-back">
 												      <button className="btn btn-danger paddingbtn" onClick={()=>onDeleteUser(item._id)}>Delete</button>
 				                      <Link to={`/history/${item._id}`}>
 				                       <button className="btn btn-primary">View</button>
