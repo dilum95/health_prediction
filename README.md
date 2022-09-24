@@ -1,23 +1,22 @@
 # Run frontend
 
-# Run frontend
-code>frontend>
-#open terminal
-npm install
-npm start
+redirect to code>frontend>
+open terminal
+"npm install"
+"npm start"
 
-#run backend
+run backend
 
-code>backend>
-#open new terminal
-npm install
-npm run server
+redirect to code>backend>
+open new terminal
+"npm install"
+"npm run server"
 
-#run model server
+redirect to run model server
 
 code>model server
-#open terminal
-python3 model.py
+open terminal
+"python3 model.py"
 
 note:install flask,flask_cors,pandas,pickle,sklearn essential
 use "npm install "commant to install them 
