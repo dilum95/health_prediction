@@ -26,7 +26,6 @@ const Header = () =>{
 
 
 	useEffect(() =>{
-
 				const user=JSON.parse(sessionStorage.getItem("activeuser"));
 				getSingleUser(user.id);
 
@@ -53,6 +52,9 @@ const Header = () =>{
 		else if(location.pathname ==="/heart"){
 			setActiveTab("Heart");
 		}
+		else if(location.pathname ==="/common"){
+			setActiveTab("Common");
+		}
 
 	},[location])
 
@@ -70,6 +72,9 @@ const Header = () =>{
 			<div className="header-right">
 			 <Link to="/home">
 			 	<p className={`${activeTab==="Home" ? "active":""}`}  onClick={() => setActiveTab("Home")}>Home</p>
+			 </Link>
+			 <Link to="/common">
+			 	<p className={`${activeTab==="Common" ? "active":""}`}  onClick={() => setActiveTab("Common")}>Common Symptoms</p>
 			 </Link>
 			 <Link to="/heart ">
 			 	<p className={`${activeTab==="Heart" ? "active":""}`}  onClick={() => setActiveTab("Heart")}>Heart Diseases</p>

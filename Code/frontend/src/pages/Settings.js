@@ -189,7 +189,12 @@ const {id} = useParams();
             onChange={handleInputChange}
             defaultValue={state.dependent}
           />
-        </div>          
+        </div> 
+        <div>
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </div>         
       </form>
            <div className="mb-3">
 	        <h3>Edit Pofile Picture</h3><br/>

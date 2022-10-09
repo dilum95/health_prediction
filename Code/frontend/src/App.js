@@ -12,6 +12,7 @@ import History from './pages/History';
 import Dependent from './pages/Dependent';
 import Settings from './pages/Settings';
 import Image from './pages/Image';
+import Common from './pages/Common';
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
             <Routes>
               <Route exact path="/" element={<Login />} />
               <Route path="/sign-in" element={<Login />} />
-              <Route path="/sign-up" element={<SignUp />} />
+              <Route path="/sign-up" element={<SignUp />} /> 
               <Route path="/home" index element={<Home/>} />
               <Route path="/history/:id" element={<History/>} />
               <Route path="/dependent_list/:id" element={<Dependent/>} />
@@ -32,6 +33,7 @@ function App() {
               <Route path="/diabities" element={<Diabities/>} />
               <Route path="/ckd" element={<Ckd/>} />
               <Route path="/heart" element={<Heart/>} />
+              <Route path="/common" element={<Common/>} />
             </Routes>
           </div>
         </div>

@@ -48,20 +48,20 @@ const Dependent = () =>{
           {data &&
             data.map((item,index)=>{
               return(
-                			<div class="column">
-                				<div class="flip-card" key={index}>
+                			<div className="column">
+                				<div class="flip-card">
 												  <div class="flip-card-inner">
 												    <div class="flip-card-front">
 												      <img src={item.image} alt="Avatar" className="carImage"/>
 												    </div>
-												    <div class="flip-card-back" className="carImage">
-												    	<h1>{item.name}</h1> 
-												      <p>{item.email}</p> 
-												      <p>{item.mobile}</p>
-												      <button className="btn btn-danger paddingbtn" onClick={()=>onDeleteUser(item._id)}>Delete</button>
-				                      <Link to={`/history/${item._id}`}>
-				                       <button className="btn btn-primary">View</button>
-				                      </Link>
+												    <div class="flip-card-back">
+												      <h1>{item.name}</h1> 
+                              <p>{item.email}</p> 
+                              <p>{item.mobile}</p>
+                              <button className="btn btn-danger paddingbtn" onClick={()=>onDeleteUser(item._id)}>Delete</button>
+                              <Link to={`/history/${item._id}`}>
+                               <button className="btn btn-primary">View</button>
+                              </Link>
 												    </div>
 												  </div>
 												</div>
@@ -77,3 +77,4 @@ const Dependent = () =>{
 }
 
 export default Dependent
+
