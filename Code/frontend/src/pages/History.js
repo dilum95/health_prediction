@@ -29,6 +29,7 @@ const View = () =>{
 		
 	useEffect(()=>{
 		getUserHosory(id)
+		getUserRecords(id)
 	},[])	
 
 	useEffect(()=>{
@@ -44,6 +45,18 @@ const View = () =>{
 		  		alert("Error response")
 		  	}
 	}
+
+	const [data1,setData1]=useState([]);
+
+	const getUserRecords= async(id) =>{
+	  	const response=await axios.get(`http://localhost:5001/allMeddicalRecords/${id}`)
+		  	if (response.status===200){
+		  		 const resdata = response.data.data
+		  		 setData1(resdata)	          
+		  	}else{
+		  		alert("Error response")
+		  	}
+	}
 		
 
 	return(
@@ -53,10 +66,50 @@ const View = () =>{
 			<Header />
 
 			<h3>History</h3>
+			<div className="row">
+			<div className="columnHomeViewLeft">
+				<h3>Record History</h3>
+					<table className="stuled-table" width="100%">
+				        <thead>
+				          <tr>
+				            <th style={{textAlign:"center"}}></th>
+				          </tr>
+				        </thead>
+				        <tbody>
+				          {data1 &&
+				            data1.map((item,index)=>{
+				              return(
+				                <tr key={index}>
+				                  <td>
+				                  <div class="card">
+									  <div class="container">
+									  <div className="row">
+									  	<div className="columnHomeView">
+									  		<h4><b>{item.condition}</b></h4> 
+										    <p>{item.doctor}</p> 
+										    <p>{item.note}</p>
+										    <p>From   : {item.from}</p> 
+										    <p>Untill :{item.untill}</p>
+									  	</div>
+									  	<div className="columnHomeAdd">
+									  		<img className="imgPresciption zoom" src={item.file} alt="Red dot" />
+									  		</div>									  	
+									  </div>
+									     
+									  </div>
+								   </div>
+								   </td>	
+				                </tr>
+				                )
+				            })
+				          }
+				        </tbody>
+				      </table>
 
-			
-			
-			<table className="stuled-table" width="100%">
+			</div>
+			<div className="columnHomeViewRight">
+			<h3>Prediction History</h3>
+				<table className="stuled-table" width="100%">
         <thead>
           <tr>
             <th style={{textAlign:"center"}}></th>
@@ -83,6 +136,11 @@ const View = () =>{
           }
         </tbody>
       </table>
+			</div>
+			</div>
+			
+			
+			
       			
 		</div>
 		)

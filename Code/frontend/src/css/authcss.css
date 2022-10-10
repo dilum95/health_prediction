@@ -78,6 +78,16 @@ body, html, .App, #root, .auth-wrapper {
   /*padding: 0 10px;*/
 }
 
+.columnHomeViewRight{
+  float: right;
+  width: 50%;
+}
+
+.columnHomeViewLeft{
+  float: left;
+  width: 50%;
+}
+
 .columnHomeAdd {
   float: right;
   width: 30%;
@@ -221,7 +231,7 @@ tr,th,td,input{
 
 /* Style the back side */
 .flip-card-back {
-  background-color: dodgerblue;
+  background-color: #333;
   color: white;
   transform: rotateY(180deg);
 }

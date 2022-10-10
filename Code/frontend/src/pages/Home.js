@@ -108,19 +108,28 @@ const Home = () =>{
 				            data.map((item,index)=>{
 				              return(
 				                <tr key={index}>
-				                  <th >
+				                  <td>
 				                  <div class="card">
 									  <div class="container">
-									    <h4><b>{item.doctor}</b></h4> 
-									    <p>{item.condition}</p> 
-									    <p>{item.note}</p> 
+									  <div className="row">
+									  	<div className="columnHomeView">
+									  		<h4><b>{item.condition}</b></h4> 
+										    <p>{item.doctor}</p> 
+										    <p>{item.note}</p>
+										    <p>From   :{item.from}</p> 
+										    <p>Untill :{item.untill}</p>
+									  	</div>
+									  	<div className="columnHomeAdd">
+									  		<img className="imgPresciption zoom" src={item.file} alt="Red dot" />
+									  		</div>									  	
+									  </div>
+									     
 									  </div>
 								   </div>
-								   </th>	
+								   </td>	
 				                </tr>
 				                )
 				            })
-
 				          }
 				        </tbody>
 				      </table>
