@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb'
 
-const uri = "mongodb+srv://dilum95:19524061@cluster0.rqcuqyb.mongodb.net/?retryWrites=true&w=majority"
+const uri = ""
 
 
 const options = {
