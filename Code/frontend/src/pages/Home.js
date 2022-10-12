@@ -35,7 +35,8 @@ const Home = () =>{
 			
 		    const response=await axios.post("http://localhost:5001/medicalRecords",sendData)
 		    if (response.status===200){
-		        alert("Data Added Sucessfully")       
+		        alert("Data Added Sucessfully")    
+		        getUserHosory(id)   
 		    }else{
 		        alert("Error response")
 		    }

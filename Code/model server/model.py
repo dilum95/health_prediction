@@ -50,7 +50,7 @@ def getdata():
         data_1_Encoder
 
         data_v = pd.read_csv(r'dataset.csv')
-        data=pd.DataFrame(data_v.iloc[76].drop(['Disease'], axis=0)).transpose()
+        data=pd.DataFrame(data_v.iloc[30].drop(['Disease'], axis=0)).transpose()
 
         X_test_new = [int(Symptom_1),int(Symptom_2),int(Symptom_3),int(Symptom_4),int(Symptom_5),int(Symptom_6),int(Symptom_7),int(Symptom_8),int(Symptom_9),int(Symptom_10),int(Symptom_11),int(Symptom_12),int(Symptom_13),int(Symptom_14),int(Symptom_15),int(Symptom_16),int(Symptom_17)] 
         print(X_test_new)
@@ -66,7 +66,7 @@ def getdata():
         with open('model_symptom-bad','rb') as file:
               mp = pickle.load(file)
 
-        pre=mp.predict(datan.transpose())
+        pre=mp.predict(datanew)
         y  = label_encoder.inverse_transform(pre) 
 
         res=pd.Series(y).to_json(orient='values')
