@@ -13,6 +13,12 @@ import Dependent from './pages/Dependent';
 import Settings from './pages/Settings';
 import Image from './pages/Image';
 import Common from './pages/Common';
+import Navigate_CKD from './pages/Navigate_CKD';
+import Navigate_Common from './pages/Navigate_Common';
+import Navigate_Diabities from './pages/Navigate_Diabities';
+import Navigate_Heart from './pages/Navigate_Heart';
+
+
 
 function App() {
   return (
@@ -34,6 +40,10 @@ function App() {
               <Route path="/ckd" element={<Ckd/>} />
               <Route path="/heart" element={<Heart/>} />
               <Route path="/common" element={<Common/>} />
+              <Route path="/n_ckd" element={<Navigate_CKD/>} />
+              <Route path="/n_common" element={<Navigate_Common/>} />
+              <Route path="/n_diabiies" element={<Navigate_Diabities/>} />
+              <Route path="/n_heart" element={<Navigate_Heart/>} />
             </Routes>
           </div>
         </div>

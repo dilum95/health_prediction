@@ -2,6 +2,7 @@ import React,{useState,Component,useEffect} from 'react'
 import {Link} from "react-router-dom";
 import axios from "axios";
 import Header from '../components/Header.js';
+import DataTable from 'react-data-table-component';
 
 
 const Home = () =>{
@@ -15,12 +16,15 @@ const Home = () =>{
 
 	const [data,setData]=useState([]);
 
+	const [search,setsearch]=useState("");
+	const [filteredData,setFilteredData]=useState([]);
+
 	const getUserHosory = async(id) =>{
 	  	const response=await axios.get(`http://localhost:5001/allMeddicalRecords/${id}`)
 		  	if (response.status===200){
 		  		 const resdata = response.data.data
-		  		 setData(resdata)	
-		  		 console.log(id)	          
+		  		 setData(resdata)
+		  		 setFilteredData(resdata)		          
 		  	}else{
 		  		alert("Error response")
 		  	}
@@ -29,6 +33,45 @@ const Home = () =>{
 	useEffect(()=>{
 		getUserHosory(id)
 	},[])
+
+	useEffect(()=>{
+		const res=data.filter((condition)=>{
+			return condition.condition.match(search);
+		} );
+		console.log(res)
+		setFilteredData(res)	
+	},[search])
+
+// ###################################################################
+	const columns = [
+	    {
+	        name: 'Condition',
+	        selector: row => row.condition,
+	        sortable: true,
+	    },
+	    {
+	        name: 'Doctor',
+	        selector: row => row.doctor,
+	        sortable: true,
+	    },
+	    {
+	        name: 'Note',
+	        selector: row => row.note,
+	        sortable: true,
+	    },
+	    {
+	        name: 'From',
+	        selector: row => row.from,
+	        sortable: true,
+	    },
+	    {
+	        name: 'Until',
+	        selector: row => row.untill,
+	        sortable: true,
+	    },
+	];
+
+
 
 	// ############################################################################################
 	const addRecords = async(sendData) =>{
@@ -98,42 +141,58 @@ const Home = () =>{
 			<div className="columnHomeView">
 				<div class="containerHome">
 					<h3>Record History</h3>
-					<table className="stuled-table" width="100%">
-				        <thead>
-				          <tr>
-				            <th style={{textAlign:"center"}}></th>
-				          </tr>
-				        </thead>
-				        <tbody>
-				          {data &&
-				            data.map((item,index)=>{
-				              return(
-				                <tr key={index}>
-				                  <td>
-				                  <div class="card">
-									  <div class="container">
-									  <div className="row">
-									  	<div className="columnHomeView">
-									  		<h4><b>{item.condition}</b></h4> 
-										    <p>{item.doctor}</p> 
-										    <p>{item.note}</p>
-										    <p>From   :{item.from}</p> 
-										    <p>Untill :{item.untill}</p>
-									  	</div>
-									  	<div className="columnHomeAdd">
-									  		<img className="imgPresciption zoom" src={item.file} alt="Red dot" />
-									  		</div>									  	
-									  </div>
-									     
-									  </div>
-								   </div>
-								   </td>	
-				                </tr>
-				                )
-				            })
-				          }
-				        </tbody>
-				      </table>
+					<input
+	            	 type=""
+	            	 className="float_left"
+	            	 placeholder="Search Here"
+	            	 value={search}
+	            	 onChange={(e)=>setsearch(e.target.value)} 
+	            	/>
+					
+
+
+                      <table className="stuled-table" width="100%">
+		                <thead>
+		                  <tr>
+		                    <th style={{textAlign:"center"}}></th>
+		                  </tr>
+		                </thead>
+		                <tbody>
+		                  {filteredData &&
+		                    filteredData.map((item,index)=>{
+		                      return(
+		                        <tr key={index}>
+		                          <td>
+		                          <div class="card">
+				                    <div class="container">
+				                    <div className="row">
+				                      <div className="columnHomeView">
+				                        <h4><b>{item.condition}</b></h4> 
+				                        <p>{item.doctor}</p> 
+				                        <p>{item.note}</p>
+				                        <p>From   :{item.from}</p> 
+				                        <p>Untill :{item.untill}</p>
+				                      </div>
+				                      <div className="columnHomeAdd">
+				                      		<div className="click-zoom">
+											  <label>
+											    <input type="checkbox" />
+											    <img className="imgPresciption" src={item.file} />
+											  </label>
+											</div>
+				                      </div>                      
+				                    </div>
+		                       
+		                    </div>
+		                   </div>
+		                   </td>  
+		                        </tr>
+		                        )
+		                    })
+		                  }
+		                </tbody>
+		              </table>
+					
 	            </div>
 	        </div> 
 	        <div className="columnHomeAdd">

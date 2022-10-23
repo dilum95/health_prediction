@@ -1,11 +1,12 @@
 import React,{useState,Component,useEffect} from 'react'
-import {Link} from "react-router-dom";
+import {useNavigate,Link} from "react-router-dom";
 import axios from "axios";
 import Header from '../components/Header.js';
 
 
 const Home = () =>{
 
+	const navigate = useNavigate();
 	const [option,setOption] = useState()
 
 	const [data, setdata] = useState({ msg: ""});	
@@ -96,11 +97,20 @@ const Home = () =>{
 	        }
 	        
 	        addPrediction(predictions)
+	        const end_result={
+	        	"prediction":data.msg
+	        }
+	        // alert(data.msg)
 
-	        alert(data.msg)
+	        window.sessionStorage.setItem('common_submit', JSON.stringify(sendData));
+	        window.sessionStorage.setItem('common_result', JSON.stringify(end_result));
+
+
 	        setdata({
                     name: data.msg
                 });
+	        navigate('/n_common');
+
 	        
 	      })
 

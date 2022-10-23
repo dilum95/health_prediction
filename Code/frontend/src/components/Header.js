@@ -17,7 +17,6 @@ const Header = () =>{
 
 	const getSingleUser = async (id) =>{
 		const response=await axios.get(`http://localhost:5001/getuser/${id}`)
-		console.log(response.data)
 		const dataset={
 			image:response.data.image
 		}

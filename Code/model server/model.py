@@ -39,7 +39,7 @@ def getdata():
         Disease=data_1['Disease']
         data_X=data_1.drop(['Disease'], axis=1)
 
-
+ 
         label_encoder = preprocessing.LabelEncoder()
           
         Disease = label_encoder.fit_transform(Disease)

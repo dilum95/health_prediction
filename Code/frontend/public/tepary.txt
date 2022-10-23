@@ -146,3 +146,63 @@ print(pre)
                           </div>
                         </div>
                       </div>
+
+
+
+
+
+
+
+                      <table className="stuled-table" width="100%">
+                <thead>
+                  <tr>
+                    <th style={{textAlign:"center"}}></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data &&
+                    data.map((item,index)=>{
+                      return(
+                        <tr key={index}>
+                          <td>
+                          <div class="card">
+                    <div class="container">
+                    <div className="row">
+                      <div className="columnHomeView">
+                        <h4><b>{item.condition}</b></h4> 
+                        <p>{item.doctor}</p> 
+                        <p>{item.note}</p>
+                        <p>From   :{item.from}</p> 
+                        <p>Untill :{item.untill}</p>
+                      </div>
+                      <div className="columnHomeAdd">
+                        <img className="imgPresciption zoom" src={item.file} alt="Red dot" />
+                        </div>                      
+                    </div>
+                       
+                    </div>
+                   </div>
+                   </td>  
+                        </tr>
+                        )
+                    })
+                  }
+                </tbody>
+              </table>
+
+              <DataTable
+                  columns={columns}
+                  data={filteredData}
+                  pagination
+                  fixedHeader
+                  fixedHeaderScrollGeight="500px"
+                  subHeader
+                  subHeaderComponent={
+                    <input
+                     type=""
+                     placeholder="Search Here"
+                     value={search}
+                     onChange={(e)=>setsearch(e.target.value)} 
+                    />
+                  }
+              />

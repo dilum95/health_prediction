@@ -1,11 +1,11 @@
 import React,{useState,Component,useEffect} from 'react'
-import {Link} from "react-router-dom";
+import {Link,useNavigate} from "react-router-dom";
 import axios from "axios";
 import Header from '../components/Header.js';
 
 
 const Home = () =>{
-
+	const navigate = useNavigate();
 	const [option,setOption] = useState()
 
 	const [data, setdata] = useState({ msg: ""});	
@@ -105,10 +105,10 @@ const Home = () =>{
 
 	        if(prediction[1]==='0'){
 	        	prediction="Chronic Kidney Diseases Risk Absent"
-	        	alert("You haven't CKD Risk")
+	        	// alert("You haven't CKD Risk")
 	        }else{
 	        	prediction="Chronic Kidney Diseases Risk Present"
-	        	alert("You have CKD Risk")
+	        	// alert("You have CKD Risk")
 	        }
 
 	        const predictions={
@@ -120,9 +120,19 @@ const Home = () =>{
 	        
 	        addPrediction(predictions)
 
+	        const end_result={
+	        	"prediction":prediction
+	        }
+	        // alert(data.msg)
+
+	        window.sessionStorage.setItem('common_submit', JSON.stringify(sendData));
+	        window.sessionStorage.setItem('common_result', JSON.stringify(end_result));
+
 	        setdata({
                     name: data.msg
                 });
+
+	        navigate('/n_ckd');
 	        
 	      })
 

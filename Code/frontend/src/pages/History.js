@@ -82,18 +82,23 @@ const View = () =>{
 				                <tr key={index}>
 				                  <td>
 				                  <div class="card">
-									  <div class="container">
-									  <div className="row">
-									  	<div className="columnHomeView">
-									  		<h4><b>{item.condition}</b></h4> 
-										    <p>{item.doctor}</p> 
-										    <p>{item.note}</p>
-										    <p>From   : {item.from}</p> 
-										    <p>Untill :{item.untill}</p>
-									  	</div>
-									  	<div className="columnHomeAdd">
-									  		<img className="imgPresciption zoom" src={item.file} alt="Red dot" />
-									  		</div>									  	
+													  <div class="container">
+													  <div className="row">
+													  	<div className="columnHomeView">
+													  		<h4><b>{item.condition}</b></h4> 
+														    <p>{item.doctor}</p> 
+														    <p>{item.note}</p>
+														    <p>From   : {item.from}</p> 
+														    <p>Untill :{item.untill}</p>
+													  	</div>
+													  	<div className="columnHomeAdd">
+				                      		<div className="click-zoom">
+											  <label>
+											    <input type="checkbox" />
+											    <img className="imgPresciption" src={item.file} />
+											  </label>
+											</div>
+				                      </div> 									  	
 									  </div>
 									     
 									  </div>
@@ -138,10 +143,7 @@ const View = () =>{
       </table>
 			</div>
 			</div>
-			
-			
-			
-      			
+
 		</div>
 		)
 }
