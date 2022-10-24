@@ -9,6 +9,8 @@ import {addDependen} from "../controllers/addDependen.js";
 import {dependentList} from "../controllers/dependentList.js";
 import upload from "../controllers/upload.js";
 import {updateAnUserImage} from "../controllers/updateAnUserImage.js";
+import {deleteRecord} from "../controllers/deleteRecord.js";
+import {deletePredict} from "../controllers/deletePredict.js";
 
 
 const router = express.Router();
@@ -26,6 +28,8 @@ router.put("/addDependen/:id",addDependen)
 router.get("/dependentList/:email",dependentList)
 router.patch("/upload/:id",upload,updateAnUserImage)
 router.put("/updateAnUserImage/:id",updateAnUserImage)
+router.delete("/deleteRecord/:id",deleteRecord)
+router.delete("/deletePredict/:id",deletePredict)
 
 export default router;     
  

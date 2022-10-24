@@ -47,6 +47,27 @@ const Home = () =>{
 		  const Symptom_12 = event.target.symptom12.value;
 		  const Symptom_13 = event.target.symptom13.value;
 
+		  if(Symptom_6 > 119){
+		  	const sendData = {
+				    "Symptom_1": Symptom_1,
+				    "Symptom_2": Symptom_2,
+				    "Symptom_3": Symptom_3,
+				    "Symptom_4": Symptom_4,
+				    "Symptom_5": Symptom_5,
+				    "Symptom_6": Symptom_6,
+				    "Symptom_7": Symptom_7,
+				    "Symptom_8": Symptom_8,
+				    "Symptom_9": Symptom_9,
+				    "Symptom_10": Symptom_10,
+				    "Symptom_11": Symptom_11,
+				    "Symptom_12": Symptom_12,
+				    "Symptom_13": Symptom_13
+				  }
+				}else{
+					alert("FBS should be over 120")
+					return false
+				}
+
 		  // const getUsers = async(sendData) =>{
 		  // 	const response=await axios.post("http://localhost:5000/data",sendData)
 		  // 	console.log(response.data)

@@ -16,23 +16,10 @@ def getdata():
         req_data = request.get_json()
 
         Symptom_1 = req_data['Symptom_1']
-        print("symptom1 is ",type(Symptom_1))
         Symptom_2 = req_data['Symptom_2']
         Symptom_3 = req_data['Symptom_3']
         Symptom_4 = req_data['Symptom_4']
         Symptom_5 = req_data['Symptom_5']
-        Symptom_6 = req_data['Symptom_6']
-        Symptom_7 = req_data['Symptom_7']
-        Symptom_8 = req_data['Symptom_8']
-        Symptom_9 = req_data['Symptom_9']
-        Symptom_10 = req_data['Symptom_10']
-        Symptom_11 = req_data['Symptom_11']
-        Symptom_12 = req_data['Symptom_12']
-        Symptom_13 = req_data['Symptom_13']
-        Symptom_14 = req_data['Symptom_14']
-        Symptom_15 = req_data['Symptom_15']
-        Symptom_16 = req_data['Symptom_16']
-        Symptom_17 = req_data['Symptom_17']
 
         data_1 = pd.read_csv(r'dataset.csv')
         data_1.head(1)
@@ -52,7 +39,7 @@ def getdata():
         data_v = pd.read_csv(r'dataset.csv')
         data=pd.DataFrame(data_v.iloc[30].drop(['Disease'], axis=0)).transpose()
 
-        X_test_new = [int(Symptom_1),int(Symptom_2),int(Symptom_3),int(Symptom_4),int(Symptom_5),int(Symptom_6),int(Symptom_7),int(Symptom_8),int(Symptom_9),int(Symptom_10),int(Symptom_11),int(Symptom_12),int(Symptom_13),int(Symptom_14),int(Symptom_15),int(Symptom_16),int(Symptom_17)] 
+        X_test_new = [int(Symptom_1),int(Symptom_2),int(Symptom_3),int(Symptom_4),int(Symptom_5)] 
         print(X_test_new)
         datanew=pd.DataFrame(X_test_new).transpose()
 

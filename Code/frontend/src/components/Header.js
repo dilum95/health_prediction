@@ -23,6 +23,11 @@ const Header = () =>{
 		setState(dataset)	
 	}
 
+	const logout =  () =>{
+			sessionStorage.clear();
+			alert("logout")
+	}
+
 
 	useEffect(() =>{
 				const user=JSON.parse(sessionStorage.getItem("activeuser"));
@@ -92,6 +97,9 @@ const Header = () =>{
 			 </Link>
 			 <Link to={`/settings/${user.id}`}>
 			 	<p className="split" onClick={() => setActiveTab("Settings")} >Settings</p>
+			 </Link>
+			 <Link to={`/`}>
+			 	<p className={`${activeTab==="Adduser" ? "active":""}`} onClick={() => logout()} >Logout</p>
 			 </Link>
 		 </div>
 		</div>

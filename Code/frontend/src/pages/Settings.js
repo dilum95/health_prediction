@@ -105,12 +105,22 @@ const {id} = useParams();
 	    const newmobile = event.target.mobile.value;
 	    const dependent = event.target.dependent.value
 
-		    let userData = {
+	    if(dependent===""){
+	    		let userData = {
+	              "name": newename,
+	              "mobile": newmobile,
+	              "dependent":""
+	            }
+	        updateUser(id,userData)    
+	    }else{
+	    		let userData = {
 	              "name": newename,
 	              "mobile": newmobile,
 	              "dependent":dependent
 	            }
-			updateUser(id,userData)
+	        updateUser(id,userData)    
+	    }
+			
 		}else{
 			alert("invalid path")
 		}
@@ -198,7 +208,7 @@ const {id} = useParams();
       </form>
            <div className="mb-3">
 	        <h3>Edit Pofile Picture</h3><br/>
-	        <input type="file" onChange={(e)=>{uploadbase64(e)}} />
+	        <input type="file" accept="image/*" onChange={(e)=>{uploadbase64(e)}} />
 	      </div>
 		</div>	
 		</div>

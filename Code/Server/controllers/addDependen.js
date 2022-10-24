@@ -9,7 +9,6 @@ export const addDependen = async (req,res) => {
     
     const userId = req.params.id
     const user = req.body;
-    console.log(user.dependent)
     const currrntData = { _id: ObjectId(userId) }
     const updateData = {
                             $set: {
@@ -18,7 +17,7 @@ export const addDependen = async (req,res) => {
                         }
 
     await updateOne(currrntData, updateData, 'med_users').then(result => {
-        console.log(result)
+
         if (result.modifiedCount == 1) {
             res.status(200).json({status: "success"});
         } else {

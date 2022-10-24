@@ -57,14 +57,33 @@ const View = () =>{
 		  		alert("Error response")
 		  	}
 	}
+
+	const onDeleteRecord = async(rec_id) =>{
+
+	  	const response=await axios.delete(`http://localhost:5001/deleteRecord/${rec_id}`)
+		  	if (response.status===200){
+					getUserRecords(id)
+					alert("Deleted Sucessfully")
+		  	}else{
+		  		alert("Error response")
+		  	}
+	}
+
+	const onDeletePredict = async(pred_id) =>{
+
+	  	const response=await axios.delete(`http://localhost:5001/deletePredict/${pred_id}`)
+		  	if (response.status===200){
+					getUserHosory(id)
+					alert("Deleted Sucessfully")
+		  	}else{
+		  		alert("Error response")
+		  	}
+	}
 		
 
 	return(
-
 		<div>
-
 			<Header />
-
 			<h3>History</h3>
 			<div className="row">
 			<div className="columnHomeViewLeft">
@@ -91,14 +110,15 @@ const View = () =>{
 														    <p>From   : {item.from}</p> 
 														    <p>Untill :{item.untill}</p>
 													  	</div>
-													  	<div className="columnHomeAdd">
-				                      		<div className="click-zoom">
+											   <div className="columnHomeAdd">
+				                 <div className="click-zoom">
 											  <label>
 											    <input type="checkbox" />
 											    <img className="imgPresciption" src={item.file} />
 											  </label>
+											  <button className="btn btn-danger paddingbtn" onClick={()=>onDeleteRecord(item._id)}>Delete</button>
 											</div>
-				                      </div> 									  	
+				             </div> 									  	
 									  </div>
 									     
 									  </div>
@@ -131,19 +151,18 @@ const View = () =>{
 										    <h4><b>{item.type}</b></h4> 
 										    <p>{item.date}</p> 
 										    <p>{item.prediction}</p> 
+										    <button className="btn btn-danger paddingbtn" onClick={()=>onDeletePredict(item._id)}>Delete</button>
 										  </div>
 										</div>
 									</th>	
                 </tr>
                 )
             })
-
           }
         </tbody>
       </table>
 			</div>
 			</div>
-
 		</div>
 		)
 }

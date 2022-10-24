@@ -104,8 +104,6 @@ const Home = () =>{
 		     })
 		  };
 
-  		  event.preventDefault();
-
 		  const doctor = event.target.doctor.value;
 		  const condition = event.target.condition.value;
 		  const from = event.target.from.value;
@@ -129,6 +127,8 @@ const Home = () =>{
 
 
 		  addRecords(sendData)
+		  event.preventDefault();
+		  event.target.reset();
     };
 
 
@@ -144,7 +144,7 @@ const Home = () =>{
 					<input
 	            	 type=""
 	            	 className="float_left"
-	            	 placeholder="Search Here"
+	            	 placeholder="Search here by Condition..."
 	            	 value={search}
 	            	 onChange={(e)=>setsearch(e.target.value)} 
 	            	/>
@@ -207,6 +207,7 @@ const Home = () =>{
 			            className="form-control"
 			            placeholder="Doctor"
 			            name="doctor"
+			            required
 			          />
 			        </div>
 			        <div className="mb-3">
@@ -216,15 +217,16 @@ const Home = () =>{
 			            className="form-control"
 			            placeholder="Condition"
 			            name="condition"
+			            required
 			          />
 			        </div>
 			        <div className="mb-3">
 			          <label>From</label>
-			          <input type="date" className="form-control" name="from" />
+			          <input type="date" className="form-control" name="from" required />
 			        </div>
 			        <div className="mb-3">
 			          <label>Untill</label>
-			          <input type="date" className="form-control" name="untill" />
+			          <input type="date" className="form-control" name="untill" required />
 			        </div>
 			        <div className="mb-3">
 			          <label>Note</label>
@@ -233,11 +235,12 @@ const Home = () =>{
 			            className="form-control"
 			            placeholder="Note"
 			            name="note"
+			            required
 			          />
 			        </div>
 			        <div className="mb-3">
 			          <label>Prescription</label>
-			          <input type="file" name="file" />
+			          <input type="file" name="file" accept="image/*" required />
 			        </div>
 
 			        
