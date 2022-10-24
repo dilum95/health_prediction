@@ -96,42 +96,145 @@ const Home = () =>{
 		                    <label>Symptom 1</label>
 		                    <select name='symptom1' className="form-control" onChange={handleChange}>
 		                    	<option value="0">none</option>
-							    <option value="1">Fungal infection</option>
-							    <option value="2">Allergy</option>
-							    <option value="3">GERD</option>
-							    <option value="4">Chronic cholestasis</option>
+							    <option value="1">itching</option>
+							    <option value="2">skin_rash</option>
+							    <option value="3">continuous_sneezing</option>
+							    <option value="4">shivering</option>
+							    <option value="0">stomach_pain</option>
+							    <option value="1">acidity</option>
+							    <option value="2">vomiting</option>
+							    <option value="3">indigestion</option>
+							    <option value="4">joint_pain</option>
+							    <option value="0">muscle_weakness</option>
+							    <option value="1">burning_micturition</option>
+							    <option value="2">weight_loss</option>
+							    <option value="3">sunken_eyes</option>
+							    <option value="4">cough</option>
+							    <option value="0">headache</option>
+							    <option value="1">chest_pain</option>
+							    <option value="2">back_pain</option>
+							    <option value="3">weakness_in_limbs</option>
+							    <option value="4">chills</option>
+							    <option value="0">yellowish_skin</option>
+							    <option value="1">breathlessness</option>
+							    <option value="2">cramps</option>
+							    <option value="3">weight_gain</option>
+							    <option value="4">neck_pain</option>
+							    <option value="0">stiff_neck</option>
+							    <option value="1">high_fever</option>
 							</select>
 							<label>Symptom 2</label>
 							<select name='symptom2' className="form-control" onChange={handleChange}>
 								<option value="0">none</option>
-							    <option value="1">continuous_sneezing</option>
-							    <option value="2">stomach_pain</option>
-							    <option value="3">acidity</option>
-							    <option value="4">itching</option>
+							    <option value="1">skin_rash</option>
+							    <option value="2">nodal_skin_eruptions</option>
+							    <option value="3">shivering</option>
+							    <option value="4">chills</option>
+							    <option value="0">acidity</option>
+							    <option value="1">ulcers_on_tongue</option>
+							    <option value="2">vomiting</option>
+							    <option value="3">yellowish_skin</option>
+							    <option value="4">stomach_pain</option>
+							    <option value="0">loss_of_appetite</option>
+							    <option value="1">indigestion</option>
+							    <option value="2">weight_gain</option>
+							    <option value="3">mood_swings</option>
+							    <option value="4">fatigue</option>
+							    <option value="0">neck_pain</option>
+							    <option value="1">bladder_discomfort</option>
+							    <option value="2">joint_pain</option>
+							    <option value="3">high_fever</option>
+							    <option value="4">weight_loss</option>
+							    <option value="0">restlessness</option>
+							    <option value="1">sunken_eyes</option>
+							    <option value="2">dehydration</option>
+							    <option value="3">cough</option>
+							    <option value="4">dizziness</option>
+							    <option value="0">cold_hands_and_feets</option>
+							    <option value="1">anxiety</option>
 							</select>
 							<label>Symptom 3</label>
 							<select name='symptom3' className="form-control" onChange={handleChange}>
 								<option value="0">none</option>
-							    <option value="1">shivering</option>
-							    <option value="2">ulcers_on_tongue</option>
-							    <option value="3">acidity</option>
-							    <option value="4">vomiting</option>
+							    <option value="1">nodal_skin_eruptions</option>
+							    <option value="2">dischromic_patches</option>
+							    <option value="3">chills</option>
+							    <option value="4">watering_from_eyes</option>
+							    <option value="0">ulcers_on_tongue</option>
+							    <option value="1">abdominal_pain</option>
+							    <option value="2">cold_hands_and_feets</option>
+							    <option value="3">foul_smell_of_urine</option>
+							    <option value="4">blister</option>
+							    <option value="0">skin_peeling</option>
+							    <option value="1">dehydration</option>
+							    <option value="2">diarrhoea</option>
+							    <option value="3">high_fever</option>
+							    <option value="4">breathlessness</option>
+							    <option value="0">neck_pain</option>
+							    <option value="1">blurred_and_distorted_vision</option>
+							    <option value="2">weakness_of_one_body_side</option>
+							    <option value="3">swelling_of_stomach</option>
+							    <option value="4">bloody_stool</option>
+							    <option value="0">bruising</option>
+							    <option value="1">obesity</option>
+							    <option value="2">hip_joint_pain</option>
+							    <option value="3">movement_stiffness</option>
+							    <option value="4">continuous_feel_of_urine</option>
+							    <option value="0">silver_like_dusting</option>
+							    <option value="1">extra_marital_contacts</option>
 							</select>
 							<label>Symptom 4</label>
 							<select name='symptom4' className="form-control" onChange={handleChange}>
 								<option value="0">none</option>
-							    <option value="1">chills</option>
-							    <option value="2">ulcers_on_tongue</option>
+							    <option value="1">dischromic_patches</option>
+							    <option value="2">vomiting</option>
 							    <option value="3">nausea</option>
-							    <option value="4">yellowish_skin</option>
+							    <option value="4">spotting_ urination</option>
+							    <option value="0">abdominal_pain</option>
+							    <option value="1">mood_swings</option>
+							    <option value="2">restlessness</option>
+							    <option value="3">sweating</option>
+							    <option value="4">spinning_movements</option>
+							    <option value="0">silver_like_dusting</option>
+							    <option value="1">red_sore_around_nose</option>
+							    <option value="2">irregular_sugar_level</option>
+							    <option value="3">diarrhoea</option>
+							    <option value="4">breathlessness</option>
+							    <option value="0">loss_of_balance</option>
+							    <option value="1">lack_of_concentration</option>
+							    <option value="2">blurred_and_distorted_vision</option>
+							    <option value="3">dizziness</option>
+							    <option value="4">headache</option>
+							    <option value="0">dark_urine</option>
+							    <option value="1">yellowing_of_eyes</option>
+							    <option value="2">distention_of_abdomen</option>
+							    <option value="3">irritation_in_anus</option>
+							    <option value="4">swollen_legs</option>
+							    <option value="0">swollen_legs</option>
+							    <option value="1">small_dents_in_nails</option>
 							</select>
 							<label>Symptom 5</label>
 							<select name='symptom5' className="form-control" onChange={handleChange}>
 								<option value="0">none</option>
 							    <option value="1">cough</option>
-							    <option value="2">watering_from_eyes</option>
+							    <option value="2">chest_pain</option>
 							    <option value="3">loss_of_appetite</option>
-							    <option value="4">nausea</option>
+							    <option value="4">abdominal_pain</option>
+							    <option value="0">spotting_urination</option>
+							    <option value="1">internal_itching</option>
+							    <option value="2">passage_of_gases</option>
+							    <option value="3">sweating</option>
+							    <option value="4">headache</option>
+							    <option value="0">swelling_joints</option>
+							    <option value="1">painful_walking</option>
+							    <option value="2">loss_of_balance</option>
+							    <option value="3">small_dents_in_nails</option>
+							    <option value="4">yellow_crust_ooze</option>
+							    <option value="0">mucoid_sputum</option>
+							    <option value="1">lack_of_concentration</option>
+							    <option value="2">history_of_alcohol_consumption</option>
+							    <option value="3">swollen_blood_vessels</option>
+							    <option value="4">diarrhoea</option>
 							</select>
 
 		                    
