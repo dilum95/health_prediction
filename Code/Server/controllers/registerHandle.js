@@ -38,7 +38,7 @@ const  checkAvaliableUser =(email) => {
 // http://localhost:5001/register
 export const signin = async (req,res) => {
         const user = req.body;
-        // console.log(user)
+
         // check avialble user
         const resUser = await checkAvaliableUser(user.email).catch(err => console.error(err));
 
@@ -79,7 +79,6 @@ export const login = async (req,res) => {
                 }
                 if (response) {
                     delete result.password;
-                    console.log(result)
                     res.status(200).json({status: "success",...result })
 
                 } else {

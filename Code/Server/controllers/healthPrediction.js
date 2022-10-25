@@ -7,16 +7,6 @@ import fetch from 'node-fetch';
 export const healthPrediction = async (req,res) => {
     const prediction = req.body;
 
-// #####################################################################################
-// #####################################################################################
-// let url = "http://localhost:5000/";
-//     fetch(url, {
-//         method: 'GET'
-// }).then(response => console.log(response.json()));
-    
-// #####################################################################################
-// #####################################################################################
-
     await insert(prediction, 'med_prediction').then(result => {                            
         res.status(200).json({ status:'success'});
 

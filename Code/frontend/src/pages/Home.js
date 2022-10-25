@@ -42,38 +42,7 @@ const Home = () =>{
 		setFilteredData(res)	
 	},[search])
 
-// ###################################################################
-	const columns = [
-	    {
-	        name: 'Condition',
-	        selector: row => row.condition,
-	        sortable: true,
-	    },
-	    {
-	        name: 'Doctor',
-	        selector: row => row.doctor,
-	        sortable: true,
-	    },
-	    {
-	        name: 'Note',
-	        selector: row => row.note,
-	        sortable: true,
-	    },
-	    {
-	        name: 'From',
-	        selector: row => row.from,
-	        sortable: true,
-	    },
-	    {
-	        name: 'Until',
-	        selector: row => row.untill,
-	        sortable: true,
-	    },
-	];
 
-
-
-	// ############################################################################################
 	const addRecords = async(sendData) =>{
 			
 		    const response=await axios.post("http://localhost:5001/medicalRecords",sendData)

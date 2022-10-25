@@ -4,7 +4,6 @@ import { ObjectId } from "mongodb";
 
 // add dependent
 // http://localhost:5001/deleteRecord/631f8d122070c41a3fb0742e
-
 export const deleteRecord = async (req,res) => {
     
     const id = req.params.id;

@@ -5,6 +5,7 @@ import Header from '../components/Header.js';
 
 
 const Home = () =>{
+
 	const navigate = useNavigate();
 	const [option,setOption] = useState()
 
@@ -59,11 +60,6 @@ const Home = () =>{
 		  const Symptom_24 = event.target.symptom24.value;
 		  const Symptom_25 = event.target.symptom25.value;
 
-		  // const getUsers = async(sendData) =>{
-		  // 	const response=await axios.post("http://localhost:5000/data",sendData)
-		  // 	console.log(response.data)
-		  	
-		  // }
 
 		  const sendData = {
 		    "Symptom_1": Symptom_1,
@@ -72,10 +68,10 @@ const Home = () =>{
 		    "Symptom_4": Symptom_4,
 		    "Symptom_5": Symptom_5,
 		    "Symptom_6": Symptom_6,
-		    "Symptom_7": Symptom_7,
-		    "Symptom_8": Symptom_8,
-		    "Symptom_9": Symptom_9,
-		    "Symptom_10": Symptom_10,
+		    "Symptom_7": Symptom_7.split('-')[0],
+		    "Symptom_8": Symptom_8.split('-')[0],
+		    "Symptom_9": Symptom_9.split('-')[0],
+		    "Symptom_10": Symptom_10.split('-')[0],
 		    "Symptom_11": Symptom_11,
 		    "Symptom_12": Symptom_12,
 		    "Symptom_13": Symptom_13,
@@ -85,12 +81,12 @@ const Home = () =>{
 		    "Symptom_17": Symptom_17,
 		    "Symptom_18": Symptom_18,
 		    "Symptom_19": Symptom_19,
-		    "Symptom_20": Symptom_20,
-		    "Symptom_21": Symptom_21,
-		    "Symptom_22": Symptom_22,
-		    "Symptom_23": Symptom_23,
-		    "Symptom_24": Symptom_24,
-		    "Symptom_25": Symptom_25
+		    "Symptom_20": Symptom_20.split('-')[0],
+		    "Symptom_21": Symptom_21.split('-')[0],
+		    "Symptom_22": Symptom_22.split('-')[0],
+		    "Symptom_23": Symptom_23.split('-')[0],
+		    "Symptom_24": Symptom_24.split('-')[0],
+		    "Symptom_25": Symptom_25.split('-')[0]
 		  }
 		  
 
@@ -123,7 +119,34 @@ const Home = () =>{
 	        const end_result={
 	        	"prediction":prediction
 	        }
-	        // alert(data.msg)
+	        
+	        const sendData = {
+			    "Symptom_1": Symptom_1,
+			    "Symptom_2": Symptom_2,
+			    "Symptom_3": Symptom_3,
+			    "Symptom_4": Symptom_4,
+			    "Symptom_5": Symptom_5,
+			    "Symptom_6": Symptom_6,
+			    "Symptom_7": Symptom_7.split('-')[1],
+			    "Symptom_8": Symptom_8.split('-')[1],
+			    "Symptom_9": Symptom_9.split('-')[1],
+			    "Symptom_10": Symptom_10.split('-')[1],
+			    "Symptom_11": Symptom_11,
+			    "Symptom_12": Symptom_12,
+			    "Symptom_13": Symptom_13,
+			    "Symptom_14": Symptom_14,
+			    "Symptom_15": Symptom_15,
+			    "Symptom_16": Symptom_16,
+			    "Symptom_17": Symptom_17,
+			    "Symptom_18": Symptom_18,
+			    "Symptom_19": Symptom_19,
+			    "Symptom_20": Symptom_20.split('-')[1],
+			    "Symptom_21": Symptom_21.split('-')[1],
+			    "Symptom_22": Symptom_22.split('-')[1],
+			    "Symptom_23": Symptom_23.split('-')[1],
+			    "Symptom_24": Symptom_24.split('-')[1],
+			    "Symptom_25": Symptom_25.split('-')[1]
+			  }
 
 	        window.sessionStorage.setItem('common_submit', JSON.stringify(sendData));
 	        window.sessionStorage.setItem('common_result', JSON.stringify(end_result));
@@ -161,23 +184,23 @@ const Home = () =>{
 		                <input type="text" className="form-control" placeholder="SU" defaultValue="0" onChange={handleChange} name="symptom6" />
 		                <label>RBC</label>
 		                <select name='symptom7' className="form-control" onChange={handleChange}>
-							<option value="0">normal</option>
-						    <option value="1">abnormal</option>
+							<option value="0-normal">normal</option>
+						    <option value="1-abnormal">abnormal</option>
 						</select>
 						<label>PC</label>
 						<select name='symptom8' className="form-control" onChange={handleChange}>
-							<option value="0">normal</option>
-						    <option value="1">abnormal</option>
+							<option value="0-normal">normal</option>
+						    <option value="1-abnormal">abnormal</option>
 						</select>
 						<label>PCC</label>
 						<select name='symptom9' className="form-control" onChange={handleChange}>
-							<option value="0">present</option>
-						    <option value="1">not present</option>
+							<option value="0-present">present</option>
+						    <option value="1-not_present">not present</option>
 						</select>
 						<label>BA</label>
 						<select name='symptom10' className="form-control" onChange={handleChange}>
-							<option value="0">present</option>
-						    <option value="1">not present</option>
+							<option value="0-present">present</option>
+						    <option value="1-notpresent">not present</option>
 						</select>
 						<label>BGR</label>
 		                <input type="text" className="form-control" placeholder="BGR" defaultValue="0" onChange={handleChange} name="symptom11" />
@@ -199,33 +222,33 @@ const Home = () =>{
 		                <input type="text" className="form-control" placeholder="RC" defaultValue="0" onChange={handleChange} name="symptom19" />
 		                <label>HTN</label>
 		                <select name='symptom20' className="form-control" onChange={handleChange}>
-							<option value="0">no</option>
-						    <option value="1">yes</option>
+							<option value="0-no">no</option>
+						    <option value="1-yes">yes</option>
 						</select>
 						<label>DM</label>
 						<select name='symptom21' className="form-control" onChange={handleChange}>
-							<option value="0">no</option>
-						    <option value="1">yes</option>
+							<option value="0-no">no</option>
+						    <option value="1-yes">yes</option>
 						</select>
 						<label>CAD</label>
 						<select name='symptom22' className="form-control" onChange={handleChange}>
-							<option value="0">no</option>
-						    <option value="1">yes</option>
+							<option value="0-no">no</option>
+						    <option value="1-yes">yes</option>
 						</select>
 						<label>APPET</label>
 						<select name='symptom23' className="form-control" onChange={handleChange}>
-							<option value="0">poor</option>
-						    <option value="1">good</option>
+							<option value="0-poor">poor</option>
+						    <option value="1-good">good</option>
 						</select>
 						<label>PE</label>
 						<select name='symptom24' className="form-control" onChange={handleChange}>
-							<option value="0">no</option>
-						    <option value="1">yes</option>
+							<option value="0-no">no</option>
+						    <option value="1-yes">yes</option>
 						</select>
 						<label>ANE</label>
 						<select name='symptom25' className="form-control" onChange={handleChange}>
-							<option value="0">no</option>
-						    <option value="1">yes</option>
+							<option value="0-no">no</option>
+						    <option value="1-yes">yes</option>
 						</select>
 		              </div>
 		              <div>

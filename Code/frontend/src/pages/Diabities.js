@@ -43,11 +43,6 @@ const Home = () =>{
 		  const Symptom_7 = event.target.symptom7.value;
 		  const Symptom_8 = event.target.symptom8.value;
 
-		  // const getUsers = async(sendData) =>{
-		  // 	const response=await axios.post("http://localhost:5000/data",sendData)
-		  // 	console.log(response.data)
-		  	
-		  // }
 
 		  const sendData = {
 		    "Symptom_1": Symptom_1,
@@ -106,7 +101,7 @@ const Home = () =>{
 
 
 
-	return(
+return(
 		<div> 
 		<Header />
 			<h3>Diabities</h3>

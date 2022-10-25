@@ -4,7 +4,6 @@ import { ObjectId } from "mongodb";
 
 // add dependent
 // http://localhost:5001/addDependen/631f8d122070c41a3fb0742e
-
 export const addDependen = async (req,res) => {
     
     const userId = req.params.id

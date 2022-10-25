@@ -3,16 +3,14 @@ import {Link,useLocation} from "react-router-dom"
 import ReactDOM from 'react-dom'
 import axios from "axios";
 import "../css/Header.css"
-// import logo from "./logo512.png";
 
-// const user=JSON.parse(sessionStorage.getItem("image"));
 const initialState = {
 	image:" ",
 };
 
 const Header = () =>{
-	const [state,setState]=useState(initialState);
-	
+
+	const [state,setState]=useState(initialState);	
 	const [activeTab,setActiveTab] = useState("Home")
 
 	const getSingleUser = async (id) =>{
@@ -36,7 +34,9 @@ const Header = () =>{
 			},[state])
 
 	const location= useLocation();
+	
 	useEffect(() =>{
+
 		if(location.pathname==="/home"){
 			setActiveTab("Home");
 		}else if(location.pathname ==="/history:id"){

@@ -8,7 +8,7 @@ from sklearn import preprocessing
 app = Flask(__name__)
 CORS(app)
 
-
+# ######################### commom symptoms #################
 @app.route('/data',methods=['POST'])
 def getdata():
     if request.method == 'POST':
@@ -61,7 +61,7 @@ def getdata():
         print(res)
         return {"status":True,"msg":res}
 
-# #######################################################################
+# ############################### heart problem ########################################
 @app.route('/heart',methods=['POST'])
 def get_heart_data():
     if request.method == 'POST':
@@ -93,8 +93,7 @@ def get_heart_data():
 
         return {"status":True,"msg":res}
 
-        #######################################################################################################
-
+#################################### diabities ##################################################
 @app.route('/diabities',methods=['POST'])
 def getdata_diabities():
     if request.method == 'POST':
@@ -123,7 +122,7 @@ def getdata_diabities():
 
         return {"status":True,"msg":res} 
 
-# ##############################################################################################################
+# ################################### CKD ##############################################################
 
 @app.route('/ckd',methods=['POST'])
 def getdata_ckd():

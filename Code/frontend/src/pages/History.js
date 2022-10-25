@@ -25,7 +25,7 @@ const View = () =>{
 
 	if(!id){
 		// redicret to home
-	}		// get ser predict history	
+	}		
 		
 	useEffect(()=>{
 		getUserHosory(id)
@@ -110,21 +110,21 @@ const View = () =>{
 														    <p>From   : {item.from}</p> 
 														    <p>Untill :{item.untill}</p>
 													  	</div>
-											   <div className="columnHomeAdd">
-				                 <div className="click-zoom">
-											  <label>
-											    <input type="checkbox" />
-											    <img className="imgPresciption" src={item.file} />
-											  </label>
-											  <button className="btn btn-danger paddingbtn" onClick={()=>onDeleteRecord(item._id)}>Delete</button>
-											</div>
-				             </div> 									  	
-									  </div>
-									     
-									  </div>
-								   </div>
-								   </td>	
-				                </tr>
+													   <div className="columnHomeAdd">
+						                 <div className="click-zoom">
+													  <label>
+													    <input type="checkbox" />
+													    <img className="imgPresciption" src={item.file} />
+													  </label>
+													  <button className="btn btn-danger paddingbtn" onClick={()=>onDeleteRecord(item._id)}>Delete</button>
+													</div>
+						             </div> 									  	
+											  </div>
+											     
+											  </div>
+										   </div>
+										   </td>	
+						          </tr>
 				                )
 				            })
 				          }

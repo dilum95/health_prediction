@@ -68,15 +68,9 @@ const Home = () =>{
 					return false
 				}
 
-		  // const getUsers = async(sendData) =>{
-		  // 	const response=await axios.post("http://localhost:5000/data",sendData)
-		  // 	console.log(response.data)
-		  	
-		  // }
-
 		  const sendData = {
 		    "Symptom_1": Symptom_1,
-		    "Symptom_2": Symptom_2,
+		    "Symptom_2": Symptom_2.split('-')[0],
 		    "Symptom_3": Symptom_3,
 		    "Symptom_4": Symptom_4,
 		    "Symptom_5": Symptom_5,
@@ -120,6 +114,21 @@ const Home = () =>{
 	        	"prediction":prediction
 	        }
 	        // alert(data.msg)
+	        const sendData = {
+				    "Symptom_1": Symptom_1,
+				    "Symptom_2": Symptom_2.split('-')[1],
+				    "Symptom_3": Symptom_3,
+				    "Symptom_4": Symptom_4,
+				    "Symptom_5": Symptom_5,
+				    "Symptom_6": Symptom_6,
+				    "Symptom_7": Symptom_7,
+				    "Symptom_8": Symptom_8,
+				    "Symptom_9": Symptom_9,
+				    "Symptom_10": Symptom_10,
+				    "Symptom_11": Symptom_11,
+				    "Symptom_12": Symptom_12,
+				    "Symptom_13": Symptom_13
+				  }
 
 	        window.sessionStorage.setItem('common_submit', JSON.stringify(sendData));
 	        window.sessionStorage.setItem('common_result', JSON.stringify(end_result));
@@ -138,7 +147,7 @@ const Home = () =>{
 
 
 
-	return(
+return(
 		<div> 
 		<Header />
 			<h3>Heart Diseases</h3>
@@ -147,11 +156,11 @@ const Home = () =>{
                   <div className="mb-3">
                     <label>Age</label>
                     <input type="number" className="form-control" placeholder="symptom1" defaultValue="0" onChange={handleChange} name="symptom1" />
-                    <label>Sex</label>
+                    <label>Gender</label>
                     <select name='symptom2' className="form-control">
-						<option value="0">Male</option>
-					    <option value="1">Female</option>
-					</select>
+											<option value="0-Male">Male</option>
+					    				<option value="1-Female">Female</option>
+					          </select>
                     <label>Chest pain</label>
                     <input type="text" className="form-control" placeholder="Chest pain" defaultValue="0" onChange={handleChange} name="symptom3" />
                     <label>BP</label>

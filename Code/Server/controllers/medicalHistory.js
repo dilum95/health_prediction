@@ -1,4 +1,4 @@
-import { findAll,findOne } from "../lib/db.handler.js";
+import { findAll,findOne,findAllAnsSort } from "../lib/db.handler.js";
 import bcrypt from "bcryptjs";
 import { ObjectId } from "mongodb";
 import  spawn  from  'child_process';
@@ -11,8 +11,9 @@ export const medicalHistory = async (req,res) => {
 
     const userId = req.params.id
     const query = { user: userId }
+    const sort = {'date':-1}
 
-    await findAll(query, 'med_prediction').then(result => {
+    await findAllAnsSort(query,sort,'med_prediction').then(result => {
             
         if (result) {
             res.status(200).json({status: "success",data:result })

@@ -37,6 +37,7 @@ const onFormSubmit=(event) =>{
             window.sessionStorage.setItem('activeuser', JSON.stringify(userData));
             window.sessionStorage.setItem('image', JSON.stringify(userImage));
             navigate('/home');
+            
           }else{
             alert("Invalid login ID")
           }

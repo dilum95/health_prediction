@@ -5,8 +5,6 @@ import { ObjectId } from "mongodb";
 export const updateAnUserImage = async (req, res) => {
     const id = req.params.id;
     const img= req.body.img
-    // const path = req.file.path.replace(/\\/g, "/")
-    // req.body = {ProfilePicture: "http://localhost:5001/" + path}
 
     const currrntData = { _id: ObjectId(id) }
     const updateData = {

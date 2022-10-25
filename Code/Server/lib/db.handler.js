@@ -69,6 +69,8 @@ export function findOne(query, cname) {
 
 }
 
+
+
 export function updateOne(query1, query2, cname) {
 
     return new Promise(async (resolve, reject) => {
