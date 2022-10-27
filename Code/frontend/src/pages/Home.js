@@ -143,7 +143,7 @@ const Home = () =>{
 				                        <p>Untill :{item.untill}</p>
 				                      </div>
 				                      <div className="columnHomeAdd">
-				                      		<div className="click-zoom">
+				                      		<div className="click-zoom1">
 											  <label>
 											    <input type="checkbox" />
 											    <img className="imgPresciption" src={item.file} />

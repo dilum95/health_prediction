@@ -64,6 +64,20 @@ body {
   cursor: zoom-out
 }
 
+.click-zoom1 input[type=checkbox] {
+  display: none
+}
+
+.click-zoom1 img {
+  transition: transform 0.25s ease;
+  cursor: zoom-in
+}
+
+.click-zoom1 input[type=checkbox]:checked~img {
+  transform: scale(3.7);
+  cursor: zoom-out
+}
+
 .pred{
   background-color: #90EE90;
 }
