@@ -131,9 +131,7 @@ const Home = () =>{
 		                    filteredData.map((item,index)=>{
 		                      return(
 		                        <tr key={index}>
-		                          <td>
-		                          <div class="card">
-				                    <div class="container">
+		                          <td>		                          
 				                    <div className="row">
 				                      <div className="columnHomeView">
 				                        <h4><b>{item.condition}</b></h4> 
@@ -150,11 +148,8 @@ const Home = () =>{
 											  </label>
 											</div>
 				                      </div>                      
-				                    </div>
-		                       
-		                    </div>
-		                   </div>
-		                   </td>  
+				                    </div>		     
+		                          </td>  
 		                        </tr>
 		                        )
 		                    })
